@@ -4,7 +4,6 @@ extends Node2D
 @onready var tile_map: TileMap = $TileMap
 
 
-
 func _ready() -> void:
 	check_entire_grid()
 
@@ -22,9 +21,15 @@ func _input(event: InputEvent) -> void:
 					if alternative_tile > 3:
 						alternative_tile = 0
 					tile_map.set_cell(0, coords, 1, atlas_coords, alternative_tile)
-				#var new_tile_data := tile_map.get_cell_tile_data(0, coords)
-				#check_if_active(new_tile_data, coords)
+				deactivate_entire_grid()
 				check_entire_grid()
+
+
+func deactivate_entire_grid() -> void:
+	for x in grid_size.x:
+		for y in grid_size.y:
+			var coords := Vector2i(x, y)
+			toggle_tile(coords, false)
 
 
 func check_entire_grid() -> void:
@@ -40,7 +45,6 @@ func check_entire_grid() -> void:
 
 
 func check_if_active(tile_data: TileData, coords: Vector2i) -> bool:
-	var atlas_coords := tile_map.get_cell_atlas_coords(0, coords)
 	var look_at_1 := tile_data.get_custom_data("look_at_1") as Vector2i
 	var look_at_2 := tile_data.get_custom_data("look_at_2") as Vector2i
 	var look_at_3 := tile_data.get_custom_data("look_at_3") as Vector2i
@@ -54,25 +58,7 @@ func check_if_active(tile_data: TileData, coords: Vector2i) -> bool:
 	var active_neighbor_3 := is_neighbor_active(neighbor_3, coords, look_at_3)
 	var active_neighbor_4 := is_neighbor_active(neighbor_4, coords, look_at_4)
 	var is_active := active_neighbor_1 or active_neighbor_2 or active_neighbor_3 or active_neighbor_4
-	var alternative_tile := tile_map.get_cell_alternative_tile(0, coords)
-	var has_changed := false
-	if is_active:
-		if atlas_coords == Vector2i(2, 0):
-			tile_map.set_cell(0, coords, 1, Vector2i(1, 0), alternative_tile)
-			has_changed = true
-		elif atlas_coords.y == 2:
-			atlas_coords.y = 1
-			tile_map.set_cell(0, coords, 1, atlas_coords, alternative_tile)
-			has_changed = true
-	else:
-		if atlas_coords == Vector2i(1, 0):
-			tile_map.set_cell(0, coords, 1, Vector2i(2, 0), alternative_tile)
-			has_changed = true
-		elif atlas_coords.y == 1:
-			atlas_coords.y = 2
-			tile_map.set_cell(0, coords, 1, atlas_coords, alternative_tile)
-			has_changed = true
-	return has_changed
+	return toggle_tile(coords, is_active)
 
 
 func is_neighbor_active(neighbor_data: TileData, coords: Vector2i, look_at_dir: Vector2i) -> bool:
@@ -100,3 +86,28 @@ func is_neighbor_active(neighbor_data: TileData, coords: Vector2i, look_at_dir: 
 		if dir == -look_at_dir:
 			can_activate = true
 	return can_activate
+
+
+func toggle_tile(coords: Vector2i, activate: bool) -> bool:
+	var has_changed := false
+	var atlas_coords := tile_map.get_cell_atlas_coords(0, coords)
+	if atlas_coords == Vector2i(0, 0):  # Never de-activate the source
+		return false
+	var alternative_tile := tile_map.get_cell_alternative_tile(0, coords)
+	if activate:
+		if atlas_coords == Vector2i(2, 0):
+			tile_map.set_cell(0, coords, 1, Vector2i(1, 0), alternative_tile)
+			has_changed = true
+		elif atlas_coords.y == 2:
+			atlas_coords.y = 1
+			tile_map.set_cell(0, coords, 1, atlas_coords, alternative_tile)
+			has_changed = true
+	else:
+		if atlas_coords == Vector2i(1, 0):
+			tile_map.set_cell(0, coords, 1, Vector2i(2, 0), alternative_tile)
+			has_changed = true
+		elif atlas_coords.y == 1:
+			atlas_coords.y = 2
+			tile_map.set_cell(0, coords, 1, atlas_coords, alternative_tile)
+			has_changed = true
+	return has_changed
