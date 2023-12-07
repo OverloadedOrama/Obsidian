@@ -43,10 +43,10 @@ func check_if_active(tile_data: TileData, coords: Vector2i, start_of_game: bool)
 	var neighbor_2 := tile_map.get_cell_tile_data(0, coords + look_at_2)
 	var neighbor_3 := tile_map.get_cell_tile_data(0, coords + look_at_3)
 	var neighbor_4 := tile_map.get_cell_tile_data(0, coords + look_at_4)
-	var active_neighbor_1 := get_neighbor_status(neighbor_1, coords + look_at_1, start_of_game)
-	var active_neighbor_2 := get_neighbor_status(neighbor_2, coords + look_at_2, start_of_game)
-	var active_neighbor_3 := get_neighbor_status(neighbor_3, coords + look_at_3, start_of_game)
-	var active_neighbor_4 := get_neighbor_status(neighbor_4, coords + look_at_4, start_of_game)
+	var active_neighbor_1 := is_neighbor_active(neighbor_1, coords, look_at_1, start_of_game)
+	var active_neighbor_2 := is_neighbor_active(neighbor_2, coords, look_at_2, start_of_game)
+	var active_neighbor_3 := is_neighbor_active(neighbor_3, coords, look_at_3, start_of_game)
+	var active_neighbor_4 := is_neighbor_active(neighbor_4, coords, look_at_4, start_of_game)
 	var is_active := active_neighbor_1 or active_neighbor_2 or active_neighbor_3 or active_neighbor_4
 	var alternative_tile := tile_map.get_cell_alternative_tile(0, coords)
 	var atlas_coords := tile_map.get_cell_atlas_coords(0, coords)
@@ -58,12 +58,29 @@ func check_if_active(tile_data: TileData, coords: Vector2i, start_of_game: bool)
 		tile_map.set_cell(0, coords, 1, atlas_coords, alternative_tile)
 
 
-func get_neighbor_status(neighbor_data: TileData, neighbor_coords: Vector2i, start_of_game: bool) -> bool:
+func is_neighbor_active(neighbor_data: TileData, coords: Vector2i, look_at_dir: Vector2i, start_of_game: bool) -> bool:
 	if not is_instance_valid(neighbor_data):
 		return false
-	var atlas_coords := tile_map.get_cell_atlas_coords(0, neighbor_coords)
+	if look_at_dir == Vector2i.ZERO:
+		return false
+	var neighbor_active := false
+	var atlas_coords := tile_map.get_cell_atlas_coords(0, coords + look_at_dir)
 	if atlas_coords == Vector2i.ZERO or atlas_coords == Vector2i(1, 0):
-		return true
+		neighbor_active = true
 	if not start_of_game and atlas_coords.y == 1:
-		return true
-	return false
+		neighbor_active = true
+	if not neighbor_active:
+		return false
+	neighbor_active = false
+	var neighbor_look_at_dirs: Array[Vector2i] = [
+		neighbor_data.get_custom_data("look_at_1") as Vector2i,
+		neighbor_data.get_custom_data("look_at_2") as Vector2i,
+		neighbor_data.get_custom_data("look_at_3") as Vector2i,
+		neighbor_data.get_custom_data("look_at_4") as Vector2i,
+	]
+	for dir in neighbor_look_at_dirs:
+		if dir == Vector2i.ZERO:
+			continue
+		if dir == -look_at_dir:
+			neighbor_active = true
+	return neighbor_active
