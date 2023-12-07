@@ -10,9 +10,6 @@ func _ready() -> void:
 			var coords := Vector2i(x, y)
 			var tile_data := tile_map.get_cell_tile_data(0, coords)
 			if is_instance_valid(tile_data):
-				var atlas_coords := tile_map.get_cell_atlas_coords(0, coords)
-				if atlas_coords.y < 1:
-					continue
 				check_if_active(tile_data, coords, true)
 
 
@@ -24,17 +21,19 @@ func _input(event: InputEvent) -> void:
 			var tile_data := tile_map.get_cell_tile_data(0, coords)
 			if is_instance_valid(tile_data):
 				var atlas_coords := tile_map.get_cell_atlas_coords(0, coords)
-				if atlas_coords.y < 1:
-					return
-				var alternative_tile := tile_map.get_cell_alternative_tile(0, coords) + 1
-				if alternative_tile > 3:
-					alternative_tile = 0
-				tile_map.set_cell(0, coords, 1, atlas_coords, alternative_tile)
+				if atlas_coords.y >= 1:
+					var alternative_tile := tile_map.get_cell_alternative_tile(0, coords) + 1
+					if alternative_tile > 3:
+						alternative_tile = 0
+					tile_map.set_cell(0, coords, 1, atlas_coords, alternative_tile)
 				var new_tile_data := tile_map.get_cell_tile_data(0, coords)
 				check_if_active(new_tile_data, coords, false)
 
 
 func check_if_active(tile_data: TileData, coords: Vector2i, start_of_game: bool) -> void:
+	var atlas_coords := tile_map.get_cell_atlas_coords(0, coords)
+	if atlas_coords.y == 0:
+		return
 	var look_at_1 := tile_data.get_custom_data("look_at_1") as Vector2i
 	var look_at_2 := tile_data.get_custom_data("look_at_2") as Vector2i
 	var look_at_3 := tile_data.get_custom_data("look_at_3") as Vector2i
@@ -49,11 +48,16 @@ func check_if_active(tile_data: TileData, coords: Vector2i, start_of_game: bool)
 	var active_neighbor_4 := is_neighbor_active(neighbor_4, coords, look_at_4, start_of_game)
 	var is_active := active_neighbor_1 or active_neighbor_2 or active_neighbor_3 or active_neighbor_4
 	var alternative_tile := tile_map.get_cell_alternative_tile(0, coords)
-	var atlas_coords := tile_map.get_cell_atlas_coords(0, coords)
 	if is_active:
+		if atlas_coords == Vector2i(2, 0):
+			tile_map.set_cell(0, coords, 1, Vector2i(1, 0), alternative_tile)
+			return
 		atlas_coords.y = 1
 		tile_map.set_cell(0, coords, 1, atlas_coords, alternative_tile)
 	else:
+		if atlas_coords == Vector2i(1, 0):
+			tile_map.set_cell(0, coords, 1, Vector2i(2, 0), alternative_tile)
+			return
 		atlas_coords.y = 2
 		tile_map.set_cell(0, coords, 1, atlas_coords, alternative_tile)
 
@@ -63,15 +67,16 @@ func is_neighbor_active(neighbor_data: TileData, coords: Vector2i, look_at_dir: 
 		return false
 	if look_at_dir == Vector2i.ZERO:
 		return false
-	var neighbor_active := false
-	var atlas_coords := tile_map.get_cell_atlas_coords(0, coords + look_at_dir)
+	var neighbor_coords := coords + look_at_dir
+	var can_activate := false
+	var atlas_coords := tile_map.get_cell_atlas_coords(0, neighbor_coords)
 	if atlas_coords == Vector2i.ZERO or atlas_coords == Vector2i(1, 0):
-		neighbor_active = true
+		can_activate = true
 	if not start_of_game and atlas_coords.y == 1:
-		neighbor_active = true
-	if not neighbor_active:
+		can_activate = true
+	if not can_activate:
 		return false
-	neighbor_active = false
+	can_activate = false
 	var neighbor_look_at_dirs: Array[Vector2i] = [
 		neighbor_data.get_custom_data("look_at_1") as Vector2i,
 		neighbor_data.get_custom_data("look_at_2") as Vector2i,
@@ -82,5 +87,5 @@ func is_neighbor_active(neighbor_data: TileData, coords: Vector2i, look_at_dir: 
 		if dir == Vector2i.ZERO:
 			continue
 		if dir == -look_at_dir:
-			neighbor_active = true
-	return neighbor_active
+			can_activate = true
+	return can_activate
