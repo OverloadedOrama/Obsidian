@@ -20,6 +20,8 @@ var levels: Array[PackedScene] = [
 var current_level := 0
 var water_targets_activated := 0
 var lava_targets_activated := 0
+var water_pipes := 0
+var lava_pipes := 0
 var currently_selected_tile_cell := Vector2i.ZERO
 var game_is_over := false
 
@@ -29,6 +31,9 @@ var game_is_over := false
 @onready var lava_targets: Label = %LavaTargets
 @onready var game_result: Label = %GameResult
 @onready var next_level_button: BaseButton = %NextLevelButton
+@onready var rotate_pipe_sound: AudioStreamPlayer = $RotatePipeSound
+@onready var water_activated_sound: AudioStreamPlayer2D = $WaterActivatedSound
+@onready var lava_activated_sound: AudioStreamPlayer2D = $LavaActivatedSound
 
 
 func _ready() -> void:
@@ -59,6 +64,7 @@ func _input(event: InputEvent) -> void:
 				if alternative_tile > 3:
 					alternative_tile = 0
 				tile_map.set_cell(0, coords, 1, atlas_coords, alternative_tile)
+				rotate_pipe_sound.play()
 			calculate_game_status()
 	queue_redraw()
 
@@ -69,8 +75,16 @@ func _draw() -> void:
 
 
 func calculate_game_status() -> void:
+	var prev_water_pipes := water_pipes
+	var prev_lava_pipes := lava_pipes
+	water_pipes = 0
+	lava_pipes = 0
 	deactivate_entire_grid()
 	check_entire_grid()
+	if water_pipes > prev_water_pipes:
+		water_activated_sound.play()
+	if lava_pipes > prev_lava_pipes:
+		lava_activated_sound.play()
 	water_targets.text = "%s/%s" % [water_targets_activated, tile_map.water_targets_needed]
 	lava_targets.text = "%s/%s" % [lava_targets_activated, tile_map.lava_targets_needed]
 	if water_targets_activated == tile_map.water_targets_needed and lava_targets_activated == tile_map.lava_targets_needed:
@@ -156,20 +170,28 @@ func toggle_tile(coords: Vector2i, set_state: ActivatedStates) -> bool:
 	if atlas_coords == WATER_SOURCE_ATLAS_COORDS or atlas_coords == LAVA_SOURCE_ATLAS_COORDS:
 		# Never de-activate the sources
 		return false
+	if atlas_coords == Vector2i(-1, -1):
+		return false
 	var alternative_tile := tile_map.get_cell_alternative_tile(0, coords)
 	if atlas_coords.y == 0:
-		var target_coords := INACTIVE_ATLAS_COORDS
+		var target_coords := atlas_coords
 		if set_state == ActivatedStates.WATER:
 			water_targets_activated += 1
 			target_coords = WATER_ACTIVATED_ATLAS_COORDS
 		elif set_state == ActivatedStates.LAVA:
 			lava_targets_activated += 1
 			target_coords = LAVA_ACTIVATED_ATLAS_COORDS
+		else:
+			target_coords = INACTIVE_ATLAS_COORDS
 		if atlas_coords != target_coords:
 			tile_map.set_cell(0, coords, 1, target_coords, alternative_tile)
 			has_changed = true
 	else:
 		if atlas_coords.y != set_state + 1:
+			if set_state == ActivatedStates.WATER:
+				water_pipes += 1
+			elif set_state == ActivatedStates.LAVA:
+				lava_pipes += 1
 			atlas_coords.y = set_state + 1
 			tile_map.set_cell(0, coords, 1, atlas_coords, alternative_tile)
 			has_changed = true
