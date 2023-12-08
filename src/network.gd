@@ -1,13 +1,18 @@
 extends Node2D
 
 enum ActivatedStates { NONE, WATER, LAVA, BOTH }
+const WATER_SOURCE_ATLAS_COORDS := Vector2i.ZERO
+const WATER_ACTIVATED_ATLAS_COORDS := Vector2i(1, 0)
+const LAVA_SOURCE_ATLAS_COORDS := Vector2i(2, 0)
+const LAVA_ACTIVATED_ATLAS_COORDS := Vector2i(3, 0)
+const INACTIVE_ATLAS_COORDS := Vector2i(4, 0)
 
 @export var grid_size := Vector2i(8, 8)
-var water_source_atlas_coords := Vector2i.ZERO
-var water_activated_atlas_coords := Vector2i(1, 0)
-var lava_source_atlas_coords := Vector2i(2, 0)
-var lava_activated_atlas_coords := Vector2i(3, 0)
-var inactive_atlas_coords := Vector2i(4, 0)
+@export var water_targets_needed := 2
+@export var lava_targets_needed := 2
+var water_targets_activated := 0
+var lava_targets_activated := 0
+var game_is_over := false
 @onready var tile_map: TileMap = $TileMap
 
 
@@ -16,8 +21,10 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if game_is_over:
+		return
 	if event is InputEventMouseButton:
-		if event.pressed:
+		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			var pos: Vector2 = event.position - tile_map.position
 			var coords := tile_map.local_to_map(pos)
 			var tile_data := tile_map.get_cell_tile_data(0, coords)
@@ -30,6 +37,9 @@ func _input(event: InputEvent) -> void:
 					tile_map.set_cell(0, coords, 1, atlas_coords, alternative_tile)
 				deactivate_entire_grid()
 				check_entire_grid()
+			if water_targets_activated == water_targets_needed and lava_targets_activated == lava_targets_needed:
+				print("Victory")
+				game_is_over = true
 
 
 func deactivate_entire_grid() -> void:
@@ -40,6 +50,8 @@ func deactivate_entire_grid() -> void:
 
 
 func check_entire_grid() -> void:
+	water_targets_activated = 0
+	lava_targets_activated = 0
 	for x in grid_size.x:
 		for y in grid_size.y:
 			var coords := Vector2i(x, y)
@@ -67,6 +79,7 @@ func check_if_active(tile_data: TileData, coords: Vector2i) -> bool:
 	var state := active_neighbor_1 | active_neighbor_2 | active_neighbor_3 | active_neighbor_4
 	if state >= ActivatedStates.BOTH:
 		print("LOST")
+		game_is_over = true
 		state = ActivatedStates.NONE
 	return toggle_tile(coords, state)
 
@@ -79,9 +92,9 @@ func is_neighbor_active(neighbor_data: TileData, coords: Vector2i, look_at_dir: 
 	var neighbor_coords := coords + look_at_dir
 	var neighbor_active := ActivatedStates.NONE
 	var atlas_coords := tile_map.get_cell_atlas_coords(0, neighbor_coords)
-	if atlas_coords == water_source_atlas_coords or atlas_coords.y == ActivatedStates.WATER + 1:
+	if atlas_coords == WATER_SOURCE_ATLAS_COORDS or atlas_coords.y == ActivatedStates.WATER + 1:
 		neighbor_active = ActivatedStates.WATER
-	elif atlas_coords == lava_source_atlas_coords or atlas_coords.y == ActivatedStates.LAVA + 1:
+	elif atlas_coords == LAVA_SOURCE_ATLAS_COORDS or atlas_coords.y == ActivatedStates.LAVA + 1:
 		neighbor_active = ActivatedStates.LAVA
 	if neighbor_active == ActivatedStates.NONE:
 		return ActivatedStates.NONE
@@ -103,16 +116,18 @@ func is_neighbor_active(neighbor_data: TileData, coords: Vector2i, look_at_dir: 
 func toggle_tile(coords: Vector2i, set_state: ActivatedStates) -> bool:
 	var has_changed := false
 	var atlas_coords := tile_map.get_cell_atlas_coords(0, coords)
-	if atlas_coords == water_source_atlas_coords or atlas_coords == lava_source_atlas_coords:
+	if atlas_coords == WATER_SOURCE_ATLAS_COORDS or atlas_coords == LAVA_SOURCE_ATLAS_COORDS:
 		# Never de-activate the sources
 		return false
 	var alternative_tile := tile_map.get_cell_alternative_tile(0, coords)
 	if atlas_coords.y == 0:
-		var target_coords := inactive_atlas_coords
+		var target_coords := INACTIVE_ATLAS_COORDS
 		if set_state == ActivatedStates.WATER:
-			target_coords = water_activated_atlas_coords
+			water_targets_activated += 1
+			target_coords = WATER_ACTIVATED_ATLAS_COORDS
 		elif set_state == ActivatedStates.LAVA:
-			target_coords = lava_activated_atlas_coords
+			lava_targets_activated += 1
+			target_coords = LAVA_ACTIVATED_ATLAS_COORDS
 		if atlas_coords != target_coords:
 			tile_map.set_cell(0, coords, 1, target_coords, alternative_tile)
 			has_changed = true
@@ -121,12 +136,4 @@ func toggle_tile(coords: Vector2i, set_state: ActivatedStates) -> bool:
 			atlas_coords.y = set_state + 1
 			tile_map.set_cell(0, coords, 1, atlas_coords, alternative_tile)
 			has_changed = true
-	#else:
-		#if atlas_coords == Vector2i(1, 0):
-			#tile_map.set_cell(0, coords, 1, Vector2i(5, 0), alternative_tile)
-			#has_changed = true
-		#elif atlas_coords.y == 1:
-			#atlas_coords.y = set_state + 1
-			#tile_map.set_cell(0, coords, 1, atlas_coords, alternative_tile)
-			#has_changed = true
 	return has_changed
