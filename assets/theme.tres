@@ -1,7 +1,11 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bkxvisfjnnwpw"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bkxvisfjnnwpw"]
 
 [ext_resource type="FontFile" uid="uid://dpicc0aj72ox2" path="res://assets/font/PublicPixel.woff2" id="1_436fg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0afy6"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
 
 [resource]
 default_font = ExtResource("1_436fg")
 default_font_size = 8
+Panel/styles/panel = SubResource("StyleBoxFlat_0afy6")

@@ -28,7 +28,7 @@ var game_is_over := false
 @onready var water_targets: Label = %WaterTargets
 @onready var lava_targets: Label = %LavaTargets
 @onready var game_result: Label = %GameResult
-@onready var next_level_button: Button = %NextLevelButton
+@onready var next_level_button: BaseButton = %NextLevelButton
 
 
 func _ready() -> void:
@@ -71,11 +71,11 @@ func _draw() -> void:
 func calculate_game_status() -> void:
 	deactivate_entire_grid()
 	check_entire_grid()
-	water_targets.text = tr("Water: %s/%s") % [water_targets_activated, tile_map.water_targets_needed]
-	lava_targets.text = tr("Lava: %s/%s") % [lava_targets_activated, tile_map.lava_targets_needed]
+	water_targets.text = "%s/%s" % [water_targets_activated, tile_map.water_targets_needed]
+	lava_targets.text = "%s/%s" % [lava_targets_activated, tile_map.lava_targets_needed]
 	if water_targets_activated == tile_map.water_targets_needed and lava_targets_activated == tile_map.lava_targets_needed:
 		game_result.text = tr("You have won!")
-		next_level_button.visible = true
+		next_level_button.disabled = false
 		game_is_over = true
 
 
@@ -196,6 +196,6 @@ func change_level() -> void:
 	tile_map_holder.add_child(new_tile_map)
 	tile_map = new_tile_map
 	game_result.text = ""
-	next_level_button.visible = false
+	next_level_button.disabled = true
 	game_is_over = false
 	calculate_game_status()
