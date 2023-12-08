@@ -20,4 +20,4 @@ func _on_language_option_button_item_selected(index: int) -> void:
 	if index == 1:
 		TranslationServer.set_locale("el_GR")
 	else:
-		TranslationServer.set_locale("en")
+		TranslationServer.set_locale("en_US")
