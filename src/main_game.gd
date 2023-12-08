@@ -249,3 +249,8 @@ func _on_timer_timeout() -> void:
 		return
 	tile_map.seconds += 1
 	time_label.text = GameManager.format_timer(tile_map.minutes, tile_map.seconds)
+
+
+func _on_return_to_menu_pressed() -> void:
+	GameManager.store_hiscores()
+	get_tree().change_scene_to_packed(GameManager.MENU_TSCN)
