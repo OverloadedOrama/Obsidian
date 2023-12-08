@@ -46,8 +46,10 @@ func _input(event: InputEvent) -> void:
 		var coords := currently_selected_tile_cell
 		var tile_data := tile_map.get_cell_tile_data(0, coords)
 		if is_instance_valid(tile_data):
+			# Rotate pipes
 			var atlas_coords := tile_map.get_cell_atlas_coords(0, coords)
-			if atlas_coords.y >= 1:
+			# Don't rotate sources/targets and static pipes
+			if atlas_coords.y >= 1 and atlas_coords.x <= 2:
 				var alternative_tile := tile_map.get_cell_alternative_tile(0, coords) + 1
 				if alternative_tile > 3:
 					alternative_tile = 0

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnj00sigd1wi8"]
+
+[ext_resource type="TileSet" uid="uid://ju5o4sp0nt1i" path="res://assets/tileset.tres" id="1_ky1qe"]
+[ext_resource type="Script" path="res://src/GameMap.gd" id="2_vbyfs"]
+
+[node name="GameMap" type="TileMap"]
+tile_set = ExtResource("1_ky1qe")
+format = 2
+layer_0/tile_data = PackedInt32Array(196611, 1, 65537, 262147, 1, 65537, 327684, 1, 65537, 65539, 1, 65537, 131075, 131073, 65537, 262148, 65537, 196609, 393220, 1, 65537, 131076, 1, 65537, 131077, 65537, 1, 262146, 65537, 1, 458756, 65537, 1, 196613, 131073, 65537, 196610, 131073, 65537, 458754, 262145, 0, 196615, 262145, 0, 196608, 1, 0, 327680, 262145, 0, 196609, 1, 1, 196612, 1, 1, 458755, 1, 65537, 262144, 1, 65537, 3, 262145, 0, 393222, 131073, 0, 327686, 131073, 1, 262150, 1, 1, 196614, 131073, 1)
+script = ExtResource("2_vbyfs")
