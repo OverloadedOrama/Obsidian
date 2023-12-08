@@ -8,31 +8,38 @@ const LAVA_ACTIVATED_ATLAS_COORDS := Vector2i(3, 0)
 const INACTIVE_ATLAS_COORDS := Vector2i(4, 0)
 const OUTLINE_TEXTURE := preload("res://assets/outline.png")
 
-@export var grid_size := Vector2i(8, 8)
-@export var water_targets_needed := 2
-@export var lava_targets_needed := 2
+var levels: Array[PackedScene] = []
+var current_level := 0
 var water_targets_activated := 0
 var lava_targets_activated := 0
 var currently_selected_tile_cell := Vector2i.ZERO
 var game_is_over := false
 
-@onready var tile_map: TileMap = $TileMap
+@onready var tile_map_holder: Node2D = $TileMapHolder
+@onready var tile_map: TileMap
 @onready var water_targets: Label = %WaterTargets
 @onready var lava_targets: Label = %LavaTargets
 @onready var game_result: Label = %GameResult
+@onready var next_level_button: Button = %NextLevelButton
 
 
 func _ready() -> void:
+	var level_paths := DirAccess.open("res://src/Levels")
+	for path in level_paths.get_files():
+		var level := load("res://src/Levels".path_join(path))
+		levels.append(level)
 	TranslationServer.set_locale(OS.get_locale())
-	calculate_game_status()
+	change_level()
 
 
 func _input(event: InputEvent) -> void:
+	if not is_instance_valid(tile_map):
+		return
 	if game_is_over:
 		return
 	currently_selected_tile_cell += Vector2i(Input.get_vector(&"ui_left", &"ui_right", &"ui_up", &"ui_down"))
 	if event is InputEventMouseMotion:
-		var pos: Vector2 = event.position - tile_map.position
+		var pos: Vector2 = event.position - tile_map.global_position
 		if pos.x >= 0 and pos.y >= 0:
 			currently_selected_tile_cell = tile_map.local_to_map(pos)
 	elif event.is_action_pressed("rotate"):
@@ -50,23 +57,24 @@ func _input(event: InputEvent) -> void:
 
 
 func _draw() -> void:
-	var draw_pos := tile_map.position + tile_map.map_to_local(currently_selected_tile_cell) - tile_map.tile_set.tile_size / 2.0
+	var draw_pos := tile_map.global_position + tile_map.map_to_local(currently_selected_tile_cell) - tile_map.tile_set.tile_size / 2.0
 	draw_texture(OUTLINE_TEXTURE, draw_pos)
 
 
 func calculate_game_status() -> void:
 	deactivate_entire_grid()
 	check_entire_grid()
-	water_targets.text = tr("Water targets: %s/%s") % [water_targets_activated, water_targets_needed]
-	lava_targets.text = tr("Lava targets: %s/%s") % [lava_targets_activated, lava_targets_needed]
-	if water_targets_activated == water_targets_needed and lava_targets_activated == lava_targets_needed:
+	water_targets.text = tr("Water targets: %s/%s") % [water_targets_activated, tile_map.water_targets_needed]
+	lava_targets.text = tr("Lava targets: %s/%s") % [lava_targets_activated, tile_map.lava_targets_needed]
+	if water_targets_activated == tile_map.water_targets_needed and lava_targets_activated == tile_map.lava_targets_needed:
 		game_result.text = tr("You have won!")
+		next_level_button.visible = true
 		game_is_over = true
 
 
 func deactivate_entire_grid() -> void:
-	for x in grid_size.x:
-		for y in grid_size.y:
+	for x in tile_map.grid_size.x:
+		for y in tile_map.grid_size.y:
 			var coords := Vector2i(x, y)
 			toggle_tile(coords, ActivatedStates.NONE)
 
@@ -74,8 +82,8 @@ func deactivate_entire_grid() -> void:
 func check_entire_grid() -> void:
 	water_targets_activated = 0
 	lava_targets_activated = 0
-	for x in grid_size.x:
-		for y in grid_size.y:
+	for x in tile_map.grid_size.x:
+		for y in tile_map.grid_size.y:
 			var coords := Vector2i(x, y)
 			var tile_data := tile_map.get_cell_tile_data(0, coords)
 			if is_instance_valid(tile_data):
@@ -162,4 +170,25 @@ func toggle_tile(coords: Vector2i, set_state: ActivatedStates) -> bool:
 
 
 func _on_restart_button_pressed() -> void:
-	get_tree().reload_current_scene()
+	change_level()
+
+
+func _on_next_level_button_pressed() -> void:
+	if current_level == levels.size() - 1:
+		print("Levels finished")
+		current_level = 0
+	else:
+		current_level += 1
+	change_level()
+
+
+func change_level() -> void:
+	var new_tile_map := levels[current_level].instantiate()
+	if is_instance_valid(tile_map):
+		tile_map.queue_free()
+	tile_map_holder.add_child(new_tile_map)
+	tile_map = new_tile_map
+	game_result.text = ""
+	next_level_button.visible = false
+	game_is_over = false
+	calculate_game_status()
