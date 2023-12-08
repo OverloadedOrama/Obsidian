@@ -57,11 +57,11 @@ func _input(event: InputEvent) -> void:
 	if game_is_over:
 		return
 	currently_selected_tile_cell += Vector2i(Input.get_vector(&"ui_left", &"ui_right", &"ui_up", &"ui_down"))
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion or event is InputEventScreenTouch:
 		var pos: Vector2 = event.position - tile_map.global_position
 		if pos.x >= 0 and pos.y >= 0:
 			currently_selected_tile_cell = tile_map.local_to_map(pos)
-	elif event.is_action_pressed("rotate"):
+	if event.is_action_released("rotate"):
 		var coords := currently_selected_tile_cell
 		var tile_data := tile_map.get_cell_tile_data(0, coords)
 		if is_instance_valid(tile_data):
