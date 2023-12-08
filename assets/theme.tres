@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://bkxvisfjnnwpw"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bkxvisfjnnwpw"]
 
 [ext_resource type="FontFile" uid="uid://dpicc0aj72ox2" path="res://assets/font/PublicPixel.woff2" id="1_436fg"]
 [ext_resource type="Texture2D" uid="uid://ufgovlrdwful" path="res://assets/ui/value_arrow_hover.svg" id="1_d5jo5"]
@@ -6,12 +6,36 @@
 [ext_resource type="Texture2D" uid="uid://dux2tqb0m1rrv" path="res://assets/ui/value_arrow_press.svg" id="3_ged5k"]
 [ext_resource type="Texture2D" uid="uid://bsisx0uof5rna" path="res://assets/ui/value_slider.png" id="4_ebh80"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_equb4"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6duvs"]
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.133364, 0.133364, 0.133364, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0afy6"]
 bg_color = Color(0.180392, 0.180392, 0.180392, 1)
 
 [resource]
 default_font = ExtResource("1_436fg")
 default_font_size = 8
+Button/styles/focus = SubResource("StyleBoxFlat_equb4")
+Button/styles/normal = SubResource("StyleBoxFlat_6duvs")
 MarginContainer/constants/margin_bottom = 2
 MarginContainer/constants/margin_left = 2
 MarginContainer/constants/margin_right = 2
