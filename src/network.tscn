@@ -43,6 +43,7 @@ text = "Lava targets: 0/2"
 
 [node name="RestartButton" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 shortcut = SubResource("Shortcut_8ap6f")
 shortcut_in_tooltip = false
 text = "Restart"
@@ -55,6 +56,7 @@ layout_mode = 2
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+focus_mode = 0
 shortcut = SubResource("Shortcut_5gau3")
 shortcut_in_tooltip = false
 text = "Next level"
