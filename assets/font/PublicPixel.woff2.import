@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://b8xsw4l86wugc"
-path="res://.godot/imported/CelticTime.ttf-3fae4a2ba2bd393119dab6c2d6dd511d.fontdata"
+uid="uid://dpicc0aj72ox2"
+path="res://.godot/imported/PublicPixel.woff2-1010e527f23dbf45f8d6f4f19954a516.fontdata"
 
 [deps]
 
-source_file="res://assets/CelticTime.ttf"
-dest_files=["res://.godot/imported/CelticTime.ttf-3fae4a2ba2bd393119dab6c2d6dd511d.fontdata"]
+source_file="res://assets/font/PublicPixel.woff2"
+dest_files=["res://.godot/imported/PublicPixel.woff2-1010e527f23dbf45f8d6f4f19954a516.fontdata"]
 
 [params]
 

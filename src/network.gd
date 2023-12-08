@@ -8,7 +8,15 @@ const LAVA_ACTIVATED_ATLAS_COORDS := Vector2i(3, 0)
 const INACTIVE_ATLAS_COORDS := Vector2i(4, 0)
 const OUTLINE_TEXTURE := preload("res://assets/outline.png")
 
-var levels: Array[PackedScene] = []
+var levels: Array[PackedScene] = [
+	preload("res://src/Levels/level_1.tscn"),
+	preload("res://src/Levels/level_2.tscn"),
+	preload("res://src/Levels/level_3.tscn"),
+	preload("res://src/Levels/level_4.tscn"),
+	preload("res://src/Levels/level_5.tscn"),
+	preload("res://src/Levels/level_6.tscn"),
+	preload("res://src/Levels/level_7.tscn"),
+]
 var current_level := 0
 var water_targets_activated := 0
 var lava_targets_activated := 0
@@ -24,10 +32,6 @@ var game_is_over := false
 
 
 func _ready() -> void:
-	var level_paths := DirAccess.open("res://src/Levels")
-	for path in level_paths.get_files():
-		var level := load("res://src/Levels".path_join(path))
-		levels.append(level)
 	if OS.get_locale().begins_with("el"):
 		TranslationServer.set_locale(OS.get_locale())
 	change_level()
