@@ -13,11 +13,15 @@ const INACTIVE_ATLAS_COORDS := Vector2i(4, 0)
 var water_targets_activated := 0
 var lava_targets_activated := 0
 var game_is_over := false
+
 @onready var tile_map: TileMap = $TileMap
+@onready var water_targets: Label = %WaterTargets
+@onready var lava_targets: Label = %LavaTargets
+@onready var game_result: Label = %GameResult
 
 
 func _ready() -> void:
-	check_entire_grid()
+	calculate_game_status()
 
 
 func _input(event: InputEvent) -> void:
@@ -35,11 +39,17 @@ func _input(event: InputEvent) -> void:
 					if alternative_tile > 3:
 						alternative_tile = 0
 					tile_map.set_cell(0, coords, 1, atlas_coords, alternative_tile)
-				deactivate_entire_grid()
-				check_entire_grid()
-			if water_targets_activated == water_targets_needed and lava_targets_activated == lava_targets_needed:
-				print("Victory")
-				game_is_over = true
+				calculate_game_status()
+
+
+func calculate_game_status() -> void:
+	deactivate_entire_grid()
+	check_entire_grid()
+	water_targets.text = "Water targets: %s/%s" % [water_targets_activated, water_targets_needed]
+	lava_targets.text = "Lava targets: %s/%s" % [lava_targets_activated, lava_targets_needed]
+	if water_targets_activated == water_targets_needed and lava_targets_activated == lava_targets_needed:
+		game_result.text = "You have won!"
+		game_is_over = true
 
 
 func deactivate_entire_grid() -> void:
@@ -78,7 +88,7 @@ func check_if_active(tile_data: TileData, coords: Vector2i) -> bool:
 	var active_neighbor_4 := is_neighbor_active(neighbor_4, coords, look_at_4)
 	var state := active_neighbor_1 | active_neighbor_2 | active_neighbor_3 | active_neighbor_4
 	if state >= ActivatedStates.BOTH:
-		print("LOST")
+		game_result.text = "You have lost!"
 		game_is_over = true
 		state = ActivatedStates.NONE
 	return toggle_tile(coords, state)
@@ -137,3 +147,7 @@ func toggle_tile(coords: Vector2i, set_state: ActivatedStates) -> bool:
 			tile_map.set_cell(0, coords, 1, atlas_coords, alternative_tile)
 			has_changed = true
 	return has_changed
+
+
+func _on_restart_button_pressed() -> void:
+	get_tree().reload_current_scene()

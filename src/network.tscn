@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://2210vbo470ku"]
+[gd_scene load_steps=6 format=3 uid="uid://2210vbo470ku"]
 
 [ext_resource type="Texture2D" uid="uid://bbbeeofgoodpt" path="res://assets/tileset.png" id="1_exv7n"]
 [ext_resource type="Script" path="res://src/network.gd" id="1_u7ny5"]
@@ -201,13 +201,49 @@ custom_data_layer_3/name = "look_at_4"
 custom_data_layer_3/type = 6
 sources/1 = SubResource("TileSetAtlasSource_ishlx")
 
+[sub_resource type="LabelSettings" id="LabelSettings_gykqi"]
+font_size = 8
+
 [node name="Network" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_u7ny5")
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2(72, 0)
+position = Vector2(128, 0)
 rotation = -0.00283144
 tile_set = SubResource("TileSet_phwwa")
 format = 2
 layer_0/tile_data = PackedInt32Array(196611, 1, 65537, 262147, 1, 65537, 327684, 1, 65537, 65539, 1, 65537, 131075, 131073, 65537, 262148, 65537, 196609, 393220, 1, 65537, 131076, 1, 65537, 131077, 65537, 1, 262146, 65537, 1, 458756, 65537, 1, 196613, 131073, 65537, 196610, 131073, 65537, 458754, 262145, 0, 196615, 262145, 0, 196608, 1, 0, 327680, 262145, 0, 196609, 1, 1, 196612, 1, 1, 458755, 1, 65537, 262144, 1, 65537, 3, 262145, 0, 393222, 131073, 0, 327686, 131073, 1, 262150, 1, 1, 196614, 131073, 1)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 144.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 143.0
+
+[node name="WaterTargets" type="Label" parent="Control/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Water targets: 0/2"
+label_settings = SubResource("LabelSettings_gykqi")
+
+[node name="LavaTargets" type="Label" parent="Control/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Lava targets: 0/2"
+label_settings = SubResource("LabelSettings_gykqi")
+
+[node name="RestartButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="GameResult" type="Label" parent="Control/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="pressed" from="Control/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
