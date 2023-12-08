@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjumi28w7ej7l"]
+[gd_scene load_steps=3 format=3 uid="uid://bjumi28w7ej7l"]
 
 [ext_resource type="Script" path="res://src/Menus/menu.gd" id="1_3cudc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_i63x7"]
 
 [node name="Menu" type="Panel"]
 anchors_preset = 15
@@ -21,6 +23,13 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+text = "OBSIDIAN"
+label_settings = SubResource("LabelSettings_i63x7")
+horizontal_alignment = 1
 
 [node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
