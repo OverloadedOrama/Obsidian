@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://2210vbo470ku"]
+[gd_scene load_steps=8 format=3 uid="uid://2210vbo470ku"]
 
 [ext_resource type="Texture2D" uid="uid://bbbeeofgoodpt" path="res://assets/tileset.png" id="1_exv7n"]
 [ext_resource type="Script" path="res://src/network.gd" id="1_u7ny5"]
@@ -204,6 +204,12 @@ sources/1 = SubResource("TileSetAtlasSource_ishlx")
 [sub_resource type="LabelSettings" id="LabelSettings_gykqi"]
 font_size = 8
 
+[sub_resource type="InputEventAction" id="InputEventAction_db36q"]
+action = &"restart"
+
+[sub_resource type="Shortcut" id="Shortcut_8ap6f"]
+events = [SubResource("InputEventAction_db36q")]
+
 [node name="Network" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_u7ny5")
@@ -240,6 +246,7 @@ label_settings = SubResource("LabelSettings_gykqi")
 
 [node name="RestartButton" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
+shortcut = SubResource("Shortcut_8ap6f")
 text = "Restart"
 
 [node name="GameResult" type="Label" parent="Control/VBoxContainer"]

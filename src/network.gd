@@ -6,12 +6,14 @@ const WATER_ACTIVATED_ATLAS_COORDS := Vector2i(1, 0)
 const LAVA_SOURCE_ATLAS_COORDS := Vector2i(2, 0)
 const LAVA_ACTIVATED_ATLAS_COORDS := Vector2i(3, 0)
 const INACTIVE_ATLAS_COORDS := Vector2i(4, 0)
+const OUTLINE_TEXTURE := preload("res://assets/outline.png")
 
 @export var grid_size := Vector2i(8, 8)
 @export var water_targets_needed := 2
 @export var lava_targets_needed := 2
 var water_targets_activated := 0
 var lava_targets_activated := 0
+var currently_selected_tile_cell := Vector2i.ZERO
 var game_is_over := false
 
 @onready var tile_map: TileMap = $TileMap
@@ -27,19 +29,28 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if game_is_over:
 		return
-	if event is InputEventMouseButton:
-		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			var pos: Vector2 = event.position - tile_map.position
-			var coords := tile_map.local_to_map(pos)
-			var tile_data := tile_map.get_cell_tile_data(0, coords)
-			if is_instance_valid(tile_data):
-				var atlas_coords := tile_map.get_cell_atlas_coords(0, coords)
-				if atlas_coords.y >= 1:
-					var alternative_tile := tile_map.get_cell_alternative_tile(0, coords) + 1
-					if alternative_tile > 3:
-						alternative_tile = 0
-					tile_map.set_cell(0, coords, 1, atlas_coords, alternative_tile)
-				calculate_game_status()
+	currently_selected_tile_cell += Vector2i(Input.get_vector(&"ui_left", &"ui_right", &"ui_up", &"ui_down"))
+	if event is InputEventMouseMotion:
+		var pos: Vector2 = event.position - tile_map.position
+		if pos.x >= 0 and pos.y >= 0:
+			currently_selected_tile_cell = tile_map.local_to_map(pos)
+	elif event.is_action_pressed("rotate"):
+		var coords := currently_selected_tile_cell
+		var tile_data := tile_map.get_cell_tile_data(0, coords)
+		if is_instance_valid(tile_data):
+			var atlas_coords := tile_map.get_cell_atlas_coords(0, coords)
+			if atlas_coords.y >= 1:
+				var alternative_tile := tile_map.get_cell_alternative_tile(0, coords) + 1
+				if alternative_tile > 3:
+					alternative_tile = 0
+				tile_map.set_cell(0, coords, 1, atlas_coords, alternative_tile)
+			calculate_game_status()
+	queue_redraw()
+
+
+func _draw() -> void:
+	var draw_pos := tile_map.position + tile_map.map_to_local(currently_selected_tile_cell) - tile_map.tile_set.tile_size / 2.0
+	draw_texture(OUTLINE_TEXTURE, draw_pos)
 
 
 func calculate_game_status() -> void:
