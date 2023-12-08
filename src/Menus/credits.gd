@@ -1,6 +1,6 @@
 extends Panel
 
-var menu := load("res://src/menu.tscn") as PackedScene
+var menu := load("res://src/Menus/menu.tscn") as PackedScene
 
 
 func _ready() -> void:

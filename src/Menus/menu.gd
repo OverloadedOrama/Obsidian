@@ -1,7 +1,7 @@
 extends Panel
 
 const NETWORK_TSCN := preload("res://src/main_game.tscn")
-const CREDITS_TSCN := preload("res://src/credits.tscn")
+const CREDITS_TSCN := preload("res://src/Menus/credits.tscn")
 
 @onready var play_button: Button = %PlayButton
 @onready var exit_button: Button = %ExitButton

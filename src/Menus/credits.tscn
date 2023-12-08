@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://drhabkltstidn"]
 
-[ext_resource type="Script" path="res://src/credits.gd" id="1_y8w1b"]
+[ext_resource type="Script" path="res://src/Menus/credits.gd" id="1_y8w1b"]
 
 [node name="Credits" type="Panel"]
 anchors_preset = 15
