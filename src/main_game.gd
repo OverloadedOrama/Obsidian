@@ -214,6 +214,7 @@ func _on_restart_button_pressed() -> void:
 
 
 func _on_next_level_button_pressed() -> void:
+	GameManager.add_level_data(tile_map, current_level)
 	if current_level == levels.size() - 1:
 		finished_all_levels()
 	else:
@@ -239,14 +240,11 @@ func change_level() -> void:
 
 
 func finished_all_levels() -> void:
-	print("Levels finished")
-	current_level = 0
+	get_tree().change_scene_to_packed(GameManager.HISCORES_TSCN)
 
 
 func _on_timer_timeout() -> void:
 	if game_is_over:
 		return
 	tile_map.seconds += 1
-	var minutes_str := ("%s" % tile_map.minutes).pad_zeros(2)
-	var seconds_str := ("%s" % tile_map.seconds).pad_zeros(2)
-	time_label.text = minutes_str + ":" + seconds_str
+	time_label.text = GameManager.format_timer(tile_map.minutes, tile_map.seconds)
