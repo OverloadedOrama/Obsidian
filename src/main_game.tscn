@@ -1,16 +1,16 @@
 [gd_scene load_steps=16 format=3 uid="uid://2210vbo470ku"]
 
-[ext_resource type="Script" path="res://src/network.gd" id="1_u7ny5"]
-[ext_resource type="Texture2D" uid="uid://dybtc1b3aekgj" path="res://assets/network_background.png" id="2_jam5w"]
-[ext_resource type="Texture2D" uid="uid://o5ua3mryottk" path="res://assets/water_drop.png" id="3_yqh02"]
-[ext_resource type="Texture2D" uid="uid://bp8kexh74y1a4" path="res://assets/lava_drop.png" id="4_wtgxu"]
-[ext_resource type="Texture2D" uid="uid://bwe32rtkaufn" path="res://assets/restart.png" id="5_sb4tn"]
-[ext_resource type="Texture2D" uid="uid://jxnhcy4qoogx" path="res://assets/hourglass.png" id="5_sjpsu"]
-[ext_resource type="Texture2D" uid="uid://bc1wgwj8rf1gr" path="res://assets/next_level.png" id="6_v2duk"]
-[ext_resource type="Texture2D" uid="uid://vhngd2w2l1no" path="res://assets/next_level_disabled.png" id="7_scom3"]
-[ext_resource type="AudioStream" uid="uid://dotxfxq7hop4u" path="res://assets/audio/sounds/13287__schademans__pipe6.wav" id="8_wc16q"]
-[ext_resource type="AudioStream" uid="uid://cm80vvuu2chcr" path="res://assets/audio/sounds/166822__quistard__water-pouring-4.ogg" id="9_cwx8u"]
-[ext_resource type="AudioStream" uid="uid://bd5u4s4n38njt" path="res://assets/audio/sounds/577880__casiba842__heavy-bubbles.wav" id="10_xlklb"]
+[ext_resource type="Script" path="res://src/main_game.gd" id="1_mqumh"]
+[ext_resource type="Texture2D" uid="uid://dybtc1b3aekgj" path="res://assets/network_background.png" id="2_1ikr5"]
+[ext_resource type="Texture2D" uid="uid://o5ua3mryottk" path="res://assets/ui/water_drop.png" id="3_80gnh"]
+[ext_resource type="Texture2D" uid="uid://bp8kexh74y1a4" path="res://assets/ui/lava_drop.png" id="4_g6n4p"]
+[ext_resource type="Texture2D" uid="uid://jxnhcy4qoogx" path="res://assets/ui/hourglass.png" id="5_j65u2"]
+[ext_resource type="Texture2D" uid="uid://bwe32rtkaufn" path="res://assets/ui/restart.png" id="6_pvojk"]
+[ext_resource type="Texture2D" uid="uid://bc1wgwj8rf1gr" path="res://assets/ui/next_level.png" id="7_wx4oq"]
+[ext_resource type="Texture2D" uid="uid://vhngd2w2l1no" path="res://assets/ui/next_level_disabled.png" id="8_q4oxf"]
+[ext_resource type="AudioStream" uid="uid://dotxfxq7hop4u" path="res://assets/audio/sounds/13287__schademans__pipe6.wav" id="9_cq6tf"]
+[ext_resource type="AudioStream" uid="uid://cm80vvuu2chcr" path="res://assets/audio/sounds/166822__quistard__water-pouring-4.ogg" id="10_wpwex"]
+[ext_resource type="AudioStream" uid="uid://bd5u4s4n38njt" path="res://assets/audio/sounds/577880__casiba842__heavy-bubbles.wav" id="11_cipi1"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_db36q"]
 action = &"restart"
@@ -25,12 +25,12 @@ action = &"next_level"
 events = [SubResource("InputEventAction_q4dhv")]
 
 [node name="Network" type="Node2D"]
-script = ExtResource("1_u7ny5")
+script = ExtResource("1_mqumh")
 
 [node name="TileMapHolder" type="Sprite2D" parent="."]
 show_behind_parent = true
 position = Vector2(128, 0)
-texture = ExtResource("2_jam5w")
+texture = ExtResource("2_1ikr5")
 centered = false
 
 [node name="Control" type="Panel" parent="."]
@@ -51,7 +51,7 @@ columns = 2
 [node name="WaterTextureRect" type="TextureRect" parent="Control/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-texture = ExtResource("3_yqh02")
+texture = ExtResource("3_80gnh")
 stretch_mode = 2
 
 [node name="WaterTargets" type="Label" parent="Control/VBoxContainer/GridContainer"]
@@ -62,7 +62,7 @@ text = "0/2"
 [node name="LavaTextureRect" type="TextureRect" parent="Control/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-texture = ExtResource("4_wtgxu")
+texture = ExtResource("4_g6n4p")
 stretch_mode = 2
 
 [node name="LavaTargets" type="Label" parent="Control/VBoxContainer/GridContainer"]
@@ -73,7 +73,7 @@ text = "0/2"
 [node name="TimeTextureRect" type="TextureRect" parent="Control/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-texture = ExtResource("5_sjpsu")
+texture = ExtResource("5_j65u2")
 stretch_mode = 2
 
 [node name="TimeLabel" type="Label" parent="Control/VBoxContainer/GridContainer"]
@@ -100,7 +100,7 @@ size_flags_horizontal = 0
 focus_mode = 0
 shortcut = SubResource("Shortcut_8ap6f")
 shortcut_in_tooltip = false
-texture_normal = ExtResource("5_sb4tn")
+texture_normal = ExtResource("6_pvojk")
 
 [node name="NextLevelButton" type="TextureButton" parent="Control/VBoxContainer/GridContainer2"]
 unique_name_in_owner = true
@@ -110,21 +110,21 @@ focus_mode = 0
 disabled = true
 shortcut = SubResource("Shortcut_5gau3")
 shortcut_in_tooltip = false
-texture_normal = ExtResource("6_v2duk")
-texture_disabled = ExtResource("7_scom3")
+texture_normal = ExtResource("7_wx4oq")
+texture_disabled = ExtResource("8_q4oxf")
 
 [node name="GameResult" type="Label" parent="Control/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
 [node name="RotatePipeSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_wc16q")
+stream = ExtResource("9_cq6tf")
 
 [node name="WaterActivatedSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_cwx8u")
+stream = ExtResource("10_wpwex")
 
 [node name="LavaActivatedSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("10_xlklb")
+stream = ExtResource("11_cipi1")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

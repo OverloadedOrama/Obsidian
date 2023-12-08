@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jxnhcy4qoogx"
-path="res://.godot/imported/hourglass.png-dc0b9ff82cbbcde9995de79c340b2cb2.ctex"
+uid="uid://ufgovlrdwful"
+path="res://.godot/imported/value_arrow_hover.svg-1a56092ae25e5e96dd8e2cb7859bcdd6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/hourglass.png"
-dest_files=["res://.godot/imported/hourglass.png-dc0b9ff82cbbcde9995de79c340b2cb2.ctex"]
+source_file="res://assets/ui/value_arrow_hover.svg"
+dest_files=["res://.godot/imported/value_arrow_hover.svg-1a56092ae25e5e96dd8e2cb7859bcdd6.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

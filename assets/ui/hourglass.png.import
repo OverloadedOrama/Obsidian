@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o5ua3mryottk"
-path="res://.godot/imported/water_drop.png-38757410cf36f4265965fcc6b1e140d5.ctex"
+uid="uid://jxnhcy4qoogx"
+path="res://.godot/imported/hourglass.png-cc2ac008f08684c1ef4fb2a556f5c764.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/water_drop.png"
-dest_files=["res://.godot/imported/water_drop.png-38757410cf36f4265965fcc6b1e140d5.ctex"]
+source_file="res://assets/ui/hourglass.png"
+dest_files=["res://.godot/imported/hourglass.png-cc2ac008f08684c1ef4fb2a556f5c764.ctex"]
 
 [params]
 

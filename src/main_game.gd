@@ -1,12 +1,12 @@
 extends Node2D
 
 enum ActivatedStates { NONE, WATER, LAVA, BOTH }
+const OUTLINE_TEXTURE := preload("res://assets/outline.png")
 const WATER_SOURCE_ATLAS_COORDS := Vector2i.ZERO
 const WATER_ACTIVATED_ATLAS_COORDS := Vector2i(1, 0)
 const LAVA_SOURCE_ATLAS_COORDS := Vector2i(2, 0)
 const LAVA_ACTIVATED_ATLAS_COORDS := Vector2i(3, 0)
 const INACTIVE_ATLAS_COORDS := Vector2i(4, 0)
-const OUTLINE_TEXTURE := preload("res://assets/outline.png")
 
 var levels: Array[PackedScene] = [
 	preload("res://src/Levels/level_1.tscn"),
@@ -215,8 +215,7 @@ func _on_restart_button_pressed() -> void:
 
 func _on_next_level_button_pressed() -> void:
 	if current_level == levels.size() - 1:
-		print("Levels finished")
-		current_level = 0
+		finished_all_levels()
 	else:
 		current_level += 1
 	change_level()
@@ -237,6 +236,11 @@ func change_level() -> void:
 	next_level_button.disabled = true
 	game_is_over = false
 	calculate_game_status()
+
+
+func finished_all_levels() -> void:
+	print("Levels finished")
+	current_level = 0
 
 
 func _on_timer_timeout() -> void:
