@@ -1,6 +1,7 @@
 extends Panel
 
 const NETWORK_TSCN := preload("res://src/main_game.tscn")
+const SETTINGS_TSCN := preload("res://src/Menus/settings.tscn")
 const CREDITS_TSCN := preload("res://src/Menus/credits.tscn")
 
 @onready var play_button: Button = %PlayButton
@@ -22,7 +23,7 @@ func _on_hi_scores_button_pressed() -> void:
 
 
 func _on_settings_button_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_packed(SETTINGS_TSCN)
 
 
 func _on_credits_button_pressed() -> void:

@@ -119,12 +119,15 @@ layout_mode = 2
 
 [node name="RotatePipeSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_cq6tf")
+bus = &"Sounds"
 
 [node name="WaterActivatedSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_wpwex")
+bus = &"Sounds"
 
 [node name="LavaActivatedSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_cipi1")
+bus = &"Sounds"
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

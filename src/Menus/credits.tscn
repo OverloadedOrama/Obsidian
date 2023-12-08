@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://drhabkltstidn"]
 
-[ext_resource type="Script" path="res://src/Menus/credits.gd" id="1_y8w1b"]
+[ext_resource type="Script" path="res://src/Menus/credits.gd" id="1_ykcp0"]
 
 [node name="Credits" type="Panel"]
 anchors_preset = 15
@@ -8,7 +8,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_y8w1b")
+script = ExtResource("1_ykcp0")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
