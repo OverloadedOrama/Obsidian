@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://2210vbo470ku"]
+[gd_scene load_steps=17 format=3 uid="uid://2210vbo470ku"]
 
 [ext_resource type="Script" path="res://src/main_game.gd" id="1_mqumh"]
 [ext_resource type="Texture2D" uid="uid://dybtc1b3aekgj" path="res://assets/network_background.png" id="2_1ikr5"]
@@ -11,17 +11,23 @@
 [ext_resource type="AudioStream" uid="uid://cm80vvuu2chcr" path="res://assets/audio/sounds/166822__quistard__water-pouring-4.ogg" id="10_wpwex"]
 [ext_resource type="AudioStream" uid="uid://bd5u4s4n38njt" path="res://assets/audio/sounds/577880__casiba842__heavy-bubbles.wav" id="11_cipi1"]
 
-[sub_resource type="InputEventAction" id="InputEventAction_q4dhv"]
-action = &"next_level"
+[sub_resource type="InputEventAction" id="InputEventAction_hawk4"]
+action = &"return_to_menu"
 
-[sub_resource type="Shortcut" id="Shortcut_5gau3"]
-events = [SubResource("InputEventAction_q4dhv")]
+[sub_resource type="Shortcut" id="Shortcut_yimc3"]
+events = [SubResource("InputEventAction_hawk4")]
 
 [sub_resource type="InputEventAction" id="InputEventAction_db36q"]
 action = &"restart"
 
 [sub_resource type="Shortcut" id="Shortcut_8ap6f"]
 events = [SubResource("InputEventAction_db36q")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_q4dhv"]
+action = &"next_level"
+
+[sub_resource type="Shortcut" id="Shortcut_5gau3"]
+events = [SubResource("InputEventAction_q4dhv")]
 
 [node name="Network" type="Node2D"]
 script = ExtResource("1_mqumh")
@@ -48,6 +54,7 @@ layout_mode = 2
 columns = 2
 
 [node name="WaterTextureRect" type="TextureRect" parent="Control/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("3_80gnh")
@@ -59,6 +66,7 @@ layout_mode = 2
 text = "0/2"
 
 [node name="LavaTextureRect" type="TextureRect" parent="Control/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("4_g6n4p")
@@ -104,7 +112,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
-shortcut = SubResource("Shortcut_5gau3")
+shortcut = SubResource("Shortcut_yimc3")
 shortcut_in_tooltip = false
 texture_normal = ExtResource("7_wx4oq")
 flip_h = true

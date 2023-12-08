@@ -33,7 +33,9 @@ var game_is_over := false:
 
 @onready var tile_map_holder: Node2D = $TileMapHolder
 @onready var tile_map: GameMap
+@onready var water_texture_rect: TextureRect = %WaterTextureRect
 @onready var water_targets: Label = %WaterTargets
+@onready var lava_texture_rect: TextureRect = %LavaTextureRect
 @onready var lava_targets: Label = %LavaTargets
 @onready var game_result: Label = %GameResult
 @onready var moves_label: Label = %MovesLabel
@@ -236,6 +238,10 @@ func change_level() -> void:
 	game_result.text = ""
 	next_level_button.visible = false
 	game_is_over = false
+	water_texture_rect.visible = tile_map.water_targets_needed > 0
+	water_targets.visible = tile_map.water_targets_needed > 0
+	lava_texture_rect.visible = tile_map.lava_targets_needed > 0
+	lava_targets.visible = tile_map.lava_targets_needed > 0
 	calculate_game_status()
 
 
