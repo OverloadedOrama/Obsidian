@@ -44,6 +44,11 @@ restart={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://translations/el_GR.po", "res://translations/en.po")
+locale/translations_pot_files=PackedStringArray("res://src/network.tscn", "res://src/network.gd")
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

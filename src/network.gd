@@ -23,6 +23,7 @@ var game_is_over := false
 
 
 func _ready() -> void:
+	TranslationServer.set_locale(OS.get_locale())
 	calculate_game_status()
 
 
@@ -56,10 +57,10 @@ func _draw() -> void:
 func calculate_game_status() -> void:
 	deactivate_entire_grid()
 	check_entire_grid()
-	water_targets.text = "Water targets: %s/%s" % [water_targets_activated, water_targets_needed]
-	lava_targets.text = "Lava targets: %s/%s" % [lava_targets_activated, lava_targets_needed]
+	water_targets.text = tr("Water targets: %s/%s") % [water_targets_activated, water_targets_needed]
+	lava_targets.text = tr("Lava targets: %s/%s") % [lava_targets_activated, lava_targets_needed]
 	if water_targets_activated == water_targets_needed and lava_targets_activated == lava_targets_needed:
-		game_result.text = "You have won!"
+		game_result.text = tr("You have won!")
 		game_is_over = true
 
 
@@ -99,7 +100,7 @@ func check_if_active(tile_data: TileData, coords: Vector2i) -> bool:
 	var active_neighbor_4 := is_neighbor_active(neighbor_4, coords, look_at_4)
 	var state := active_neighbor_1 | active_neighbor_2 | active_neighbor_3 | active_neighbor_4
 	if state >= ActivatedStates.BOTH:
-		game_result.text = "You have lost!"
+		game_result.text = tr("You have lost!")
 		game_is_over = true
 		state = ActivatedStates.NONE
 	return toggle_tile(coords, state)
