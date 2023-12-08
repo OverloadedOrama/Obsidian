@@ -23,17 +23,26 @@ var lava_targets_activated := 0
 var water_pipes := 0
 var lava_pipes := 0
 var currently_selected_tile_cell := Vector2i.ZERO
-var game_is_over := false
+var game_is_over := false:
+	set(value):
+		game_is_over = value
+		if value:
+			timer.stop()
+		else:
+			timer.start()
 
 @onready var tile_map_holder: Node2D = $TileMapHolder
-@onready var tile_map: TileMap
+@onready var tile_map: GameMap
 @onready var water_targets: Label = %WaterTargets
 @onready var lava_targets: Label = %LavaTargets
 @onready var game_result: Label = %GameResult
+@onready var moves_label: Label = %MovesLabel
+@onready var time_label: Label = %TimeLabel
 @onready var next_level_button: BaseButton = %NextLevelButton
 @onready var rotate_pipe_sound: AudioStreamPlayer = $RotatePipeSound
 @onready var water_activated_sound: AudioStreamPlayer2D = $WaterActivatedSound
 @onready var lava_activated_sound: AudioStreamPlayer2D = $LavaActivatedSound
+@onready var timer: Timer = $Timer
 
 
 func _ready() -> void:
@@ -64,6 +73,8 @@ func _input(event: InputEvent) -> void:
 				if alternative_tile > 3:
 					alternative_tile = 0
 				tile_map.set_cell(0, coords, 1, atlas_coords, alternative_tile)
+				tile_map.moves += 1
+				moves_label.text = "%s" % tile_map.moves
 				rotate_pipe_sound.play()
 			calculate_game_status()
 	queue_redraw()
@@ -217,7 +228,21 @@ func change_level() -> void:
 		tile_map.queue_free()
 	tile_map_holder.add_child(new_tile_map)
 	tile_map = new_tile_map
+	tile_map.moves = 0
+	tile_map.seconds = 0
+	tile_map.minutes = 0
+	moves_label.text = "%s" % tile_map.moves
+	time_label.text = "00:00"
 	game_result.text = ""
 	next_level_button.disabled = true
 	game_is_over = false
 	calculate_game_status()
+
+
+func _on_timer_timeout() -> void:
+	if game_is_over:
+		return
+	tile_map.seconds += 1
+	var minutes_str := ("%s" % tile_map.minutes).pad_zeros(2)
+	var seconds_str := ("%s" % tile_map.seconds).pad_zeros(2)
+	time_label.text = minutes_str + ":" + seconds_str
