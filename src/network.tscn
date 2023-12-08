@@ -30,8 +30,10 @@ offset_bottom = 144.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 0
-offset_right = 153.0
-offset_bottom = 143.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 82.0
+offset_bottom = 142.0
 
 [node name="WaterTargets" type="Label" parent="Control/VBoxContainer"]
 unique_name_in_owner = true
