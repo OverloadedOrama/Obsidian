@@ -240,6 +240,7 @@ func change_level() -> void:
 
 
 func finished_all_levels() -> void:
+	GameManager.store_hiscores()
 	get_tree().change_scene_to_packed(GameManager.HISCORES_TSCN)
 
 
