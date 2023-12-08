@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://2210vbo470ku"]
+[gd_scene load_steps=6 format=3 uid="uid://2210vbo470ku"]
 
 [ext_resource type="Script" path="res://src/network.gd" id="1_u7ny5"]
 
@@ -7,6 +7,12 @@ action = &"restart"
 
 [sub_resource type="Shortcut" id="Shortcut_8ap6f"]
 events = [SubResource("InputEventAction_db36q")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_q4dhv"]
+action = &"next_level"
+
+[sub_resource type="Shortcut" id="Shortcut_5gau3"]
+events = [SubResource("InputEventAction_q4dhv")]
 
 [node name="Network" type="Node2D"]
 script = ExtResource("1_u7ny5")
@@ -38,6 +44,7 @@ text = "Lava targets: 0/2"
 [node name="RestartButton" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 shortcut = SubResource("Shortcut_8ap6f")
+shortcut_in_tooltip = false
 text = "Restart"
 
 [node name="GameResult" type="Label" parent="Control/VBoxContainer"]
@@ -48,6 +55,8 @@ layout_mode = 2
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+shortcut = SubResource("Shortcut_5gau3")
+shortcut_in_tooltip = false
 text = "Next level"
 
 [connection signal="pressed" from="Control/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

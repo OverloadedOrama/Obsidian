@@ -28,7 +28,8 @@ func _ready() -> void:
 	for path in level_paths.get_files():
 		var level := load("res://src/Levels".path_join(path))
 		levels.append(level)
-	TranslationServer.set_locale(OS.get_locale())
+	if OS.get_locale().begins_with("el"):
+		TranslationServer.set_locale(OS.get_locale())
 	change_level()
 
 
