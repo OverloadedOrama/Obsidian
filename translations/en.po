@@ -1,45 +1,123 @@
-# LANGUAGE translation for Plumbing for the following files:
-# res://src/network.tscn
-# res://src/network.gd
+# LANGUAGE translation for Obsidian for the following files:
+# res://src/main_game.gd
+# res://src/main_game.tscn
+# res://src/Menus/credits.gd
+# res://src/Menus/credits.tscn
+# res://src/Menus/hiscores.gd
+# res://src/Menus/hiscores.tscn
+# res://src/Menus/menu.gd
+# res://src/Menus/menu.tscn
+# res://src/Menus/settings.gd
+# res://src/Menus/settings.tscn
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Plumbing\n"
+"Project-Id-Version: Obsidian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
-#: src/network.tscn
-msgid "Water: 0/2"
-msgstr "Water: 0/2"
-
-#: src/network.tscn
-msgid "Lava: 0/2"
-msgstr "Lava: 0/2"
-
-#: src/network.tscn
-msgid "Restart"
-msgstr "Restart"
-
-#: src/network.tscn
-msgid "Next level"
-msgstr "Next level"
-
-#: src/network.gd
-msgid "Water: %s/%s"
-msgstr "Water: %s/%s"
-
-#: src/network.gd
-msgid "Lava: %s/%s"
-msgstr "Lava: %s/%s"
-
-#: src/network.gd
+#: src/main_game.gd
 msgid "You have won!"
-msgstr "You have won"
+msgstr "You have won!"
 
-#: src/network.gd
+#: src/main_game.gd
 msgid "You have lost!"
 msgstr "You have lost!"
+
+#: src/main_game.gd
+#: src/main_game.tscn
+msgid "00:00"
+msgstr ""
+
+#: src/main_game.gd
+msgid ""
+msgstr ""
+
+#: src/main_game.tscn
+msgid "0/2"
+msgstr ""
+
+#: src/main_game.tscn
+msgid "Moves:"
+msgstr "Moves:"
+
+#: src/main_game.tscn
+msgid "0"
+msgstr ""
+
+#: src/Menus/credits.tscn
+msgid ""
+"Made by Emmanouil Papadeas (Overloaded) in 66 hours for the GDA Online Game Jam #1\n"
+"\n"
+"Made with Godot Engine\n"
+"Graphics made with Pixelorama\n"
+"Font: Public Pixel Font\n"
+"Sounds from freesound.org\n"
+"\n"
+msgstr ""
+"Made by Emmanouil Papadeas (Overloaded) in 66 hours for the GDA Online Game Jam #1\n"
+"\n"
+"Made with Godot Engine\n"
+"Graphics made with Pixelorama\n"
+"Font: Public Pixel Font\n"
+"Sounds from freesound.org\n"
+"\n"
+
+#: src/Menus/credits.tscn
+#: src/Menus/hiscores.tscn
+#: src/Menus/settings.tscn
+msgid "Return to menu"
+msgstr "Return to menu"
+
+#: src/Menus/hiscores.gd
+#: src/Menus/hiscores.tscn
+msgid "Level %s"
+msgstr "Level %s"
+
+#: src/Menus/hiscores.tscn
+msgid "Hi-Scores  \n"
+msgstr "Hi-Scores  \n"
+
+#: src/Menus/hiscores.tscn
+msgid "Level"
+msgstr "Level"
+
+#: src/Menus/hiscores.tscn
+msgid "Moves"
+msgstr "Moves"
+
+#: src/Menus/hiscores.tscn
+msgid "Time"
+msgstr "Time"
+
+#: src/Menus/menu.tscn
+msgid "Play"
+msgstr "Play"
+
+#: src/Menus/menu.tscn
+msgid "Hi-Scores"
+msgstr "Hi-Scores"
+
+#: src/Menus/menu.tscn
+msgid "Settings"
+msgstr "Settings"
+
+#: src/Menus/menu.tscn
+msgid "Credits"
+msgstr "Credits"
+
+#: src/Menus/menu.tscn
+msgid "Exit"
+msgstr "Exit"
+
+#: src/Menus/settings.tscn
+msgid "Sound volume:"
+msgstr "Sound volume:"
+
+#: src/Menus/settings.tscn
+msgid "Language:"
+msgstr "Language:"

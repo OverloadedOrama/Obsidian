@@ -76,7 +76,7 @@ ctrl={
 [internationalization]
 
 locale/translations=PackedStringArray("res://translations/el_GR.po", "res://translations/en.po")
-locale/translations_pot_files=PackedStringArray("res://src/network.tscn", "res://src/network.gd")
+locale/translations_pot_files=PackedStringArray("res://src/main_game.gd", "res://src/main_game.tscn", "res://src/Menus/credits.gd", "res://src/Menus/credits.tscn", "res://src/Menus/hiscores.gd", "res://src/Menus/hiscores.tscn", "res://src/Menus/menu.gd", "res://src/Menus/menu.tscn", "res://src/Menus/settings.gd", "res://src/Menus/settings.tscn")
 
 [rendering]
 

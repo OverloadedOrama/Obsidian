@@ -15,7 +15,7 @@ func _ready() -> void:
 		var level_label := Label.new()
 		var moves_label := Label.new()
 		var time_label := Label.new()
-		level_label.text = "Level %s" % (i + 1)
+		level_label.text = tr("Level %s") % (i + 1)
 		moves_label.text = str(level_data.moves)
 		time_label.text = GameManager.format_timer(level_data.minutes, level_data.seconds)
 		score_container.add_child(level_label)

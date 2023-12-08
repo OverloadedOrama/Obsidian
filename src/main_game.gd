@@ -48,8 +48,6 @@ var game_is_over := false:
 
 
 func _ready() -> void:
-	if OS.get_locale().begins_with("el"):
-		TranslationServer.set_locale(OS.get_locale())
 	change_level()
 
 
@@ -225,7 +223,7 @@ func _on_next_level_button_pressed() -> void:
 
 
 func change_level() -> void:
-	var new_tile_map := levels[current_level].instantiate()
+	var new_tile_map := levels[current_level].instantiate() as GameMap
 	if is_instance_valid(tile_map):
 		tile_map.queue_free()
 	tile_map_holder.add_child(new_tile_map)

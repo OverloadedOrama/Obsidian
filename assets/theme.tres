@@ -1,8 +1,10 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bkxvisfjnnwpw"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://bkxvisfjnnwpw"]
 
 [ext_resource type="FontFile" uid="uid://dpicc0aj72ox2" path="res://assets/font/PublicPixel.woff2" id="1_436fg"]
 [ext_resource type="Texture2D" uid="uid://ufgovlrdwful" path="res://assets/ui/value_arrow_hover.svg" id="1_d5jo5"]
-[ext_resource type="Texture2D" uid="uid://bhcavqcgm18m4" path="res://assets/ui/value_arrow.svg" id="2_vaxd8"]
+[ext_resource type="Texture2D" uid="uid://bjs5ushoq4k2w" path="res://assets/ui/value_arrow.png" id="1_r4m4w"]
+[ext_resource type="Texture2D" uid="uid://by53tyfb56ek6" path="res://assets/ui/radio_checked.png" id="2_hdros"]
+[ext_resource type="Texture2D" uid="uid://2okfv82psbbh" path="res://assets/ui/radio_unchecked.png" id="3_fmk4d"]
 [ext_resource type="Texture2D" uid="uid://dux2tqb0m1rrv" path="res://assets/ui/value_arrow_press.svg" id="3_ged5k"]
 [ext_resource type="Texture2D" uid="uid://bsisx0uof5rna" path="res://assets/ui/value_slider.png" id="4_ebh80"]
 
@@ -19,7 +21,9 @@ corner_radius_bottom_left = 4
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6duvs"]
+content_margin_left = 8.0
 content_margin_top = 3.0
+content_margin_right = 8.0
 content_margin_bottom = 3.0
 bg_color = Color(0.133364, 0.133364, 0.133364, 1)
 corner_radius_top_left = 4
@@ -31,6 +35,9 @@ anti_aliasing = false
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0afy6"]
 bg_color = Color(0.180392, 0.180392, 0.180392, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dvwcb"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 1)
+
 [resource]
 default_font = ExtResource("1_436fg")
 default_font_size = 8
@@ -40,12 +47,17 @@ MarginContainer/constants/margin_bottom = 2
 MarginContainer/constants/margin_left = 2
 MarginContainer/constants/margin_right = 2
 MarginContainer/constants/margin_top = 2
+OptionButton/icons/arrow = ExtResource("1_r4m4w")
 Panel/styles/panel = SubResource("StyleBoxFlat_0afy6")
+PopupMenu/icons/radio_checked = ExtResource("2_hdros")
+PopupMenu/icons/radio_unchecked = ExtResource("3_fmk4d")
+PopupMenu/icons/radio_unchecked_disabled = ExtResource("3_fmk4d")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_dvwcb")
 ValueSlider/base_type = &"TextureProgressBar"
 ValueSlider/colors/progress_color = Color(0.5, 0.5, 0.5, 1)
 ValueSlider/colors/under_color = Color(0.36, 0.36, 0.36, 1)
 ValueSlider/icons/arrow_hover = ExtResource("1_d5jo5")
-ValueSlider/icons/arrow_normal = ExtResource("2_vaxd8")
+ValueSlider/icons/arrow_normal = ExtResource("1_r4m4w")
 ValueSlider/icons/arrow_pressed = ExtResource("3_ged5k")
 ValueSlider/icons/texture_progress = ExtResource("4_ebh80")
 ValueSlider/icons/texture_under = ExtResource("4_ebh80")

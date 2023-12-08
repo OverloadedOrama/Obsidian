@@ -1,45 +1,127 @@
-# LANGUAGE translation for Plumbing for the following files:
-# res://src/network.tscn
-# res://src/network.gd
+# LANGUAGE translation for Obsidian for the following files:
+# res://src/main_game.gd
+# res://src/main_game.tscn
+# res://src/Menus/credits.gd
+# res://src/Menus/credits.tscn
+# res://src/Menus/hiscores.gd
+# res://src/Menus/hiscores.tscn
+# res://src/Menus/menu.gd
+# res://src/Menus/menu.tscn
+# res://src/Menus/settings.gd
+# res://src/Menus/settings.tscn
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Plumbing\n"
+"Project-Id-Version: Obsidian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
-#: src/network.tscn
-msgid "Water: 0/2"
-msgstr "Νερό: 0/2"
-
-#: src/network.tscn
-msgid "Lava: 0/2"
-msgstr "Λάβα: 0/2"
-
-#: src/network.tscn
-msgid "Restart"
-msgstr "Παίξτε ξανά"
-
-#: src/network.tscn
-msgid "Next level"
-msgstr "Επόμενη πίστα"
-
-#: src/network.gd
-msgid "Water: %s/%s"
-msgstr "Νερό: %s/%s"
-
-#: src/network.gd
-msgid "Lava: %s/%s"
-msgstr "Λάβα: %s/%s"
-
-#: src/network.gd
+#: src/main_game.gd
 msgid "You have won!"
 msgstr "Νικήσατε!"
 
-#: src/network.gd
+#: src/main_game.gd
 msgid "You have lost!"
 msgstr "Χάσατε!"
+
+#: src/main_game.gd
+#: src/main_game.tscn
+msgid "00:00"
+msgstr ""
+
+#: src/main_game.gd
+msgid ""
+msgstr ""
+
+#: src/main_game.tscn
+msgid "0/2"
+msgstr ""
+
+#: src/main_game.tscn
+msgid "Moves:"
+msgstr "Κινήσεις:"
+
+#: src/main_game.tscn
+msgid "0"
+msgstr ""
+
+#: src/Menus/credits.tscn
+msgid ""
+"Made by Emmanouil Papadeas (Overloaded) in 66 hours for the GDA Online Game Jam #1\n"
+"\n"
+"Made with Godot Engine\n"
+"Graphics made with Pixelorama\n"
+"Font: Public Pixel Font\n"
+"Sounds from freesound.org\n"
+"\n"
+msgstr ""
+"Ανεπτυγμένο από τον Εμμανουήλ Παπαδέα (Overloaded) σε 66 ώρες για το GDA Online Game Jam #1\n"
+"\n"
+"Φτιαγμένο με Godot Engine\n"
+"Γραφικά φτιαγμένα με Pixelorama\n"
+"Font: Public Pixel Font\n"
+"Ήχοι από freesound.org\n"
+"\n"
+
+#: src/Menus/credits.tscn
+#: src/Menus/hiscores.tscn
+#: src/Menus/settings.tscn
+msgid "Return to menu"
+msgstr "Επιστροφή στο μενού"
+
+#: src/Menus/hiscores.gd
+#: src/Menus/hiscores.tscn
+msgid "Level %s"
+msgstr "Πίστα %s"
+
+#: src/Menus/hiscores.tscn
+msgid "Hi-Scores  \n"
+msgstr "Υψηλά σκορ  \n"
+
+#: src/Menus/hiscores.tscn
+msgid "Level"
+msgstr "Πίστα"
+
+#: src/Menus/hiscores.tscn
+msgid "Moves"
+msgstr "Κινήσεις"
+
+#: src/Menus/hiscores.tscn
+msgid "Time"
+msgstr "Χρόνος"
+
+#: src/Menus/menu.tscn
+msgid "Play"
+msgstr "Παίξτε"
+
+#: src/Menus/menu.tscn
+msgid "Hi-Scores"
+msgstr "Υψηλά σκορ"
+
+#: src/Menus/menu.tscn
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+#: src/Menus/menu.tscn
+msgid "Credits"
+msgstr "Συντελεστές"
+
+#: src/Menus/menu.tscn
+msgid "Exit"
+msgstr "Έξοδος"
+
+#: src/Menus/settings.tscn
+msgid "Sound volume:"
+msgstr "Ένταση ήχων:"
+
+#: src/Menus/settings.tscn
+msgid "Language:"
+msgstr "Γλώσσα:"
+
+#: src/Menus/settings.tscn
+msgid "Language:"
+msgstr "Γλώσσα:"

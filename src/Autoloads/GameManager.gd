@@ -29,6 +29,8 @@ class LevelData:
 
 
 func _ready() -> void:
+	if OS.get_locale().begins_with("el"):
+		TranslationServer.set_locale(OS.get_locale())
 	config.load(SAVED_HIGHSCORE_PATH)
 
 
