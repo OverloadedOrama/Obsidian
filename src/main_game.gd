@@ -100,7 +100,7 @@ func calculate_game_status() -> void:
 	lava_targets.text = "%s/%s" % [lava_targets_activated, tile_map.lava_targets_needed]
 	if water_targets_activated == tile_map.water_targets_needed and lava_targets_activated == tile_map.lava_targets_needed:
 		game_result.text = tr("You have won!")
-		next_level_button.disabled = false
+		next_level_button.visible = true
 		game_is_over = true
 
 
@@ -234,7 +234,7 @@ func change_level() -> void:
 	moves_label.text = "%s" % tile_map.moves
 	time_label.text = "00:00"
 	game_result.text = ""
-	next_level_button.disabled = true
+	next_level_button.visible = false
 	game_is_over = false
 	calculate_game_status()
 
