@@ -1,4 +1,7 @@
-[gd_resource type="Theme" format=3 uid="uid://bkxvisfjnnwpw"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bkxvisfjnnwpw"]
+
+[ext_resource type="FontFile" uid="uid://b8xsw4l86wugc" path="res://assets/CelticTime.ttf" id="1_sn2k6"]
 
 [resource]
-default_font_size = 8
+default_font = ExtResource("1_sn2k6")
+default_font_size = 16
