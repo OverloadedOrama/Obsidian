@@ -55,9 +55,9 @@ func store_hiscores() -> void:
 		var level := levels[i]
 		var current_moves_hiscore = config.get_value("moves", str(i), 0)
 		var current_time_hiscore = config.get_value("time", str(i), 0)
-		if level.moves < current_moves_hiscore:
+		if level.moves < current_moves_hiscore or current_moves_hiscore == 0:
 			config.set_value("moves", str(i), level.moves)
 		var raw_seconds := level.minutes_to_seconds()
-		if raw_seconds < current_time_hiscore:
+		if raw_seconds < current_time_hiscore or current_time_hiscore == 0:
 			config.set_value("time", str(i), raw_seconds)
 	config.save(SAVED_HIGHSCORE_PATH)
