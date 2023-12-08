@@ -71,8 +71,8 @@ func _draw() -> void:
 func calculate_game_status() -> void:
 	deactivate_entire_grid()
 	check_entire_grid()
-	water_targets.text = tr("Water targets: %s/%s") % [water_targets_activated, tile_map.water_targets_needed]
-	lava_targets.text = tr("Lava targets: %s/%s") % [lava_targets_activated, tile_map.lava_targets_needed]
+	water_targets.text = tr("Water: %s/%s") % [water_targets_activated, tile_map.water_targets_needed]
+	lava_targets.text = tr("Lava: %s/%s") % [lava_targets_activated, tile_map.lava_targets_needed]
 	if water_targets_activated == tile_map.water_targets_needed and lava_targets_activated == tile_map.lava_targets_needed:
 		game_result.text = tr("You have won!")
 		next_level_button.visible = true

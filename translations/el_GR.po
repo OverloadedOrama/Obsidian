@@ -13,24 +13,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8-bit\n"
 
 #: src/network.tscn
-msgid "Water targets: 0/2"
-msgstr "Στόχοι νερού: 0/2"
+msgid "Water: 0/2"
+msgstr "Νερό: 0/2"
 
 #: src/network.tscn
-msgid "Lava targets: 0/2"
-msgstr "Στόχου λάβας: 0/2"
+msgid "Lava: 0/2"
+msgstr "Λάβα: 0/2"
 
 #: src/network.tscn
 msgid "Restart"
 msgstr "Παίξτε ξανά"
 
-#: src/network.gd
-msgid "Water targets: %s/%s"
-msgstr "Στόχου νερού: %s/%s"
+#: src/network.tscn
+msgid "Next level"
+msgstr "Επόμενη πίστα"
 
 #: src/network.gd
-msgid "Lava targets: %s/%s"
-msgstr "Στόχου λάβας: %s/%s"
+msgid "Water: %s/%s"
+msgstr "Νερό: %s/%s"
+
+#: src/network.gd
+msgid "Lava: %s/%s"
+msgstr "Λάβα: %s/%s"
 
 #: src/network.gd
 msgid "You have won!"

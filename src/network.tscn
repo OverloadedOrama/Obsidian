@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://2210vbo470ku"]
+[gd_scene load_steps=7 format=3 uid="uid://2210vbo470ku"]
 
 [ext_resource type="Script" path="res://src/network.gd" id="1_u7ny5"]
+[ext_resource type="Texture2D" uid="uid://dybtc1b3aekgj" path="res://assets/network_background.png" id="2_jam5w"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_db36q"]
 action = &"restart"
@@ -17,13 +18,14 @@ events = [SubResource("InputEventAction_q4dhv")]
 [node name="Network" type="Node2D"]
 script = ExtResource("1_u7ny5")
 
-[node name="TileMapHolder" type="Node2D" parent="."]
+[node name="TileMapHolder" type="Sprite2D" parent="."]
+show_behind_parent = true
 position = Vector2(128, 0)
+texture = ExtResource("2_jam5w")
+centered = false
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 104.0
+[node name="Control" type="Panel" parent="."]
+offset_right = 128.0
 offset_bottom = 144.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
@@ -34,12 +36,12 @@ offset_bottom = 143.0
 [node name="WaterTargets" type="Label" parent="Control/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Water targets: 0/2"
+text = "Water: 0/2"
 
 [node name="LavaTargets" type="Label" parent="Control/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Lava targets: 0/2"
+text = "Lava: 0/2"
 
 [node name="RestartButton" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
