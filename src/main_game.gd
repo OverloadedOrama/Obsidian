@@ -45,8 +45,9 @@ var game_is_over := PLAYING:
 @onready var moves_label: Label = %MovesLabel
 @onready var time_label: Label = %TimeLabel
 @onready var rotate_pipe_sound: AudioStreamPlayer = $RotatePipeSound
-@onready var water_activated_sound: AudioStreamPlayer2D = $WaterActivatedSound
-@onready var lava_activated_sound: AudioStreamPlayer2D = $LavaActivatedSound
+@onready var water_activated_sound: AudioStreamPlayer = $WaterActivatedSound
+@onready var lava_activated_sound: AudioStreamPlayer = $LavaActivatedSound
+@onready var victory_sound: AudioStreamPlayer = $VictorySound
 @onready var timer: Timer = $Timer
 
 
@@ -110,6 +111,7 @@ func calculate_game_status() -> void:
 	if water_targets_activated == tile_map.water_targets_needed and lava_targets_activated == tile_map.lava_targets_needed:
 		game_result.text = tr("You have won!")
 		game_is_over = WON
+		victory_sound.play()
 
 
 func deactivate_entire_grid() -> void:

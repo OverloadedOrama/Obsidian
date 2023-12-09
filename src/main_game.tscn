@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://2210vbo470ku"]
+[gd_scene load_steps=17 format=3 uid="uid://2210vbo470ku"]
 
 [ext_resource type="Script" path="res://src/main_game.gd" id="1_mqumh"]
 [ext_resource type="Texture2D" uid="uid://dybtc1b3aekgj" path="res://assets/network_background.png" id="2_1ikr5"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cenvdol3cdkvl" path="res://assets/ui/restart.png" id="6_pvojk"]
 [ext_resource type="Texture2D" uid="uid://bc1wgwj8rf1gr" path="res://assets/ui/next_level.png" id="7_wx4oq"]
 [ext_resource type="AudioStream" uid="uid://dotxfxq7hop4u" path="res://assets/audio/sounds/13287__schademans__pipe6.wav" id="9_cq6tf"]
+[ext_resource type="AudioStream" uid="uid://dg3ytmfd41acx" path="res://assets/audio/sounds/274177__littlerobotsoundfactory__jingle_win_synth_03.wav" id="10_0dvfh"]
 [ext_resource type="AudioStream" uid="uid://cm80vvuu2chcr" path="res://assets/audio/sounds/166822__quistard__water-pouring-4.ogg" id="10_wpwex"]
 [ext_resource type="AudioStream" uid="uid://bd5u4s4n38njt" path="res://assets/audio/sounds/577880__casiba842__heavy-bubbles.wav" id="11_cipi1"]
 
@@ -142,13 +143,16 @@ texture_normal = ExtResource("6_pvojk")
 stream = ExtResource("9_cq6tf")
 bus = &"Sounds"
 
-[node name="WaterActivatedSound" type="AudioStreamPlayer2D" parent="."]
+[node name="WaterActivatedSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_wpwex")
 bus = &"Sounds"
 
-[node name="LavaActivatedSound" type="AudioStreamPlayer2D" parent="."]
+[node name="LavaActivatedSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_cipi1")
 bus = &"Sounds"
+
+[node name="VictorySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_0dvfh")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
