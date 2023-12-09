@@ -34,12 +34,12 @@ script = ExtResource("1_mqumh")
 
 [node name="TileMapHolder" type="Sprite2D" parent="."]
 show_behind_parent = true
-position = Vector2(128, 0)
+position = Vector2(112, 0)
 texture = ExtResource("2_1ikr5")
 centered = false
 
 [node name="Control" type="Panel" parent="."]
-offset_right = 128.0
+offset_right = 112.0
 offset_bottom = 144.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
