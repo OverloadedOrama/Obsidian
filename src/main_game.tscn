@@ -1,7 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://2210vbo470ku"]
+[gd_scene load_steps=19 format=3 uid="uid://2210vbo470ku"]
 
 [ext_resource type="Script" path="res://src/main_game.gd" id="1_mqumh"]
-[ext_resource type="Texture2D" uid="uid://dybtc1b3aekgj" path="res://assets/network_background.png" id="2_1ikr5"]
+[ext_resource type="Texture2D" uid="uid://b4ugd0r7b8p7c" path="res://assets/ui/obsidian_game_background.png" id="2_uyp1c"]
 [ext_resource type="Texture2D" uid="uid://o5ua3mryottk" path="res://assets/ui/water_drop.png" id="3_80gnh"]
 [ext_resource type="Texture2D" uid="uid://bp8kexh74y1a4" path="res://assets/ui/lava_drop.png" id="4_g6n4p"]
 [ext_resource type="Texture2D" uid="uid://jxnhcy4qoogx" path="res://assets/ui/hourglass.png" id="5_j65u2"]
@@ -14,6 +14,8 @@
 [ext_resource type="AudioStream" uid="uid://bdd5nn1nsxp6l" path="res://assets/audio/sounds/652328__imataco__lose-sound.wav" id="12_v52k7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4go8j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_myr3m"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_hawk4"]
 action = &"return_to_menu"
@@ -30,11 +32,13 @@ events = [SubResource("InputEventAction_db36q")]
 [node name="Network" type="Node2D"]
 script = ExtResource("1_mqumh")
 
-[node name="TileMapHolder" type="Sprite2D" parent="."]
+[node name="ObsidianGameBackground" type="Sprite2D" parent="."]
 show_behind_parent = true
-position = Vector2(112, 0)
-texture = ExtResource("2_1ikr5")
+texture = ExtResource("2_uyp1c")
 centered = false
+
+[node name="TileMapHolder" type="Node2D" parent="."]
+position = Vector2(112, 0)
 
 [node name="GameResult" type="Label" parent="."]
 unique_name_in_owner = true
@@ -55,75 +59,77 @@ autowrap_mode = 2
 [node name="Control" type="Panel" parent="."]
 offset_right = 112.0
 offset_bottom = 144.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_myr3m")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 82.0
-offset_bottom = 142.0
+offset_right = 8.0
+offset_bottom = 8.0
 
-[node name="LevelLabel" type="Label" parent="Control/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="LevelLabel" type="Label" parent="Control/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Level %s"
 
-[node name="GridContainer" type="GridContainer" parent="Control/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 columns = 2
 
-[node name="WaterTextureRect" type="TextureRect" parent="Control/VBoxContainer/GridContainer"]
+[node name="WaterTextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("3_80gnh")
 stretch_mode = 2
 
-[node name="WaterTargets" type="Label" parent="Control/VBoxContainer/GridContainer"]
+[node name="WaterTargets" type="Label" parent="Control/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0/2"
 
-[node name="LavaTextureRect" type="TextureRect" parent="Control/VBoxContainer/GridContainer"]
+[node name="LavaTextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("4_g6n4p")
 stretch_mode = 2
 
-[node name="LavaTargets" type="Label" parent="Control/VBoxContainer/GridContainer"]
+[node name="LavaTargets" type="Label" parent="Control/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0/2"
 
-[node name="TimeTextureRect" type="TextureRect" parent="Control/VBoxContainer/GridContainer"]
+[node name="TimeTextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("5_j65u2")
 stretch_mode = 2
 
-[node name="TimeLabel" type="Label" parent="Control/VBoxContainer/GridContainer"]
+[node name="TimeLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "00:00"
 
-[node name="GridContainer2" type="GridContainer" parent="Control/VBoxContainer"]
+[node name="GridContainer2" type="GridContainer" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 columns = 2
 
-[node name="MovesTextLabel" type="Label" parent="Control/VBoxContainer/GridContainer2"]
+[node name="MovesTextLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/GridContainer2"]
 layout_mode = 2
 text = "Moves:"
 
-[node name="MovesLabel" type="Label" parent="Control/VBoxContainer/GridContainer2"]
+[node name="MovesLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/GridContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="ReturnToMenu" type="TextureButton" parent="Control/VBoxContainer/HBoxContainer"]
+[node name="ReturnToMenu" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
@@ -132,7 +138,7 @@ shortcut_in_tooltip = false
 texture_normal = ExtResource("7_wx4oq")
 flip_h = true
 
-[node name="RestartButton" type="TextureButton" parent="Control/VBoxContainer/HBoxContainer"]
+[node name="RestartButton" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
@@ -140,7 +146,7 @@ shortcut = SubResource("Shortcut_8ap6f")
 shortcut_in_tooltip = false
 texture_normal = ExtResource("6_pvojk")
 
-[node name="WaterLavaWarning" type="Label" parent="Control/VBoxContainer"]
+[node name="WaterLavaWarning" type="Label" parent="Control/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -171,6 +177,6 @@ bus = &"Sounds"
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer/ReturnToMenu" to="." method="_on_return_to_menu_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/HBoxContainer/ReturnToMenu" to="." method="_on_return_to_menu_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/HBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
