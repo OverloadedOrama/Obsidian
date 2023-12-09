@@ -16,8 +16,8 @@ class LevelData:
 	var seconds := 0:
 		set(value):
 			if value >= 60:
-				seconds = 0
-				minutes += (value % 60) + 1
+				minutes += floor(value / 60)
+				seconds = value - 60 * floor(value / 60)
 			else:
 				seconds = value
 	var minutes := 0
