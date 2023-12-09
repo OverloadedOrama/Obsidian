@@ -1,5 +1,6 @@
 extends Node2D
 
+enum { PLAYING, WON, LOST }
 enum ActivatedStates { NONE, WATER, LAVA, BOTH }
 const OUTLINE_TEXTURE := preload("res://assets/outline.png")
 const WATER_SOURCE_ATLAS_COORDS := Vector2i.ZERO
@@ -25,13 +26,13 @@ var lava_targets_activated := 0
 var water_pipes := 0
 var lava_pipes := 0
 var currently_selected_tile_cell := Vector2i.ZERO
-var game_is_over := false:
+var game_is_over := PLAYING:
 	set(value):
 		game_is_over = value
-		if value:
-			timer.stop()
-		else:
+		if value == PLAYING:
 			timer.start()
+		else:
+			timer.stop()
 
 @onready var tile_map_holder: Node2D = $TileMapHolder
 @onready var tile_map: GameMap
@@ -43,7 +44,6 @@ var game_is_over := false:
 @onready var game_result: Label = %GameResult
 @onready var moves_label: Label = %MovesLabel
 @onready var time_label: Label = %TimeLabel
-@onready var next_level_button: BaseButton = %NextLevelButton
 @onready var rotate_pipe_sound: AudioStreamPlayer = $RotatePipeSound
 @onready var water_activated_sound: AudioStreamPlayer2D = $WaterActivatedSound
 @onready var lava_activated_sound: AudioStreamPlayer2D = $LavaActivatedSound
@@ -57,7 +57,13 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if not is_instance_valid(tile_map):
 		return
-	if game_is_over:
+	if game_is_over == WON:
+		if event.is_action_released("rotate"):
+			go_to_next_level()
+		return
+	elif game_is_over == LOST:
+		if event.is_action_released("rotate"):
+			change_level()  # Restart
 		return
 	currently_selected_tile_cell += Vector2i(Input.get_vector(&"ui_left", &"ui_right", &"ui_up", &"ui_down"))
 	if event is InputEventMouseMotion or event is InputEventScreenTouch:
@@ -103,8 +109,7 @@ func calculate_game_status() -> void:
 	lava_targets.text = "%s/%s" % [lava_targets_activated, tile_map.lava_targets_needed]
 	if water_targets_activated == tile_map.water_targets_needed and lava_targets_activated == tile_map.lava_targets_needed:
 		game_result.text = tr("You have won!")
-		next_level_button.visible = true
-		game_is_over = true
+		game_is_over = WON
 
 
 func deactivate_entire_grid() -> void:
@@ -144,7 +149,7 @@ func check_if_active(tile_data: TileData, coords: Vector2i) -> bool:
 	var state := active_neighbor_1 | active_neighbor_2 | active_neighbor_3 | active_neighbor_4
 	if state >= ActivatedStates.BOTH:
 		game_result.text = tr("You have lost!")
-		game_is_over = true
+		game_is_over = LOST
 		state = ActivatedStates.NONE
 	return toggle_tile(coords, state)
 
@@ -216,7 +221,7 @@ func _on_restart_button_pressed() -> void:
 	change_level()
 
 
-func _on_next_level_button_pressed() -> void:
+func go_to_next_level() -> void:
 	GameManager.add_level_data(tile_map, current_level)
 	if current_level == levels.size() - 1:
 		finished_all_levels()
@@ -238,8 +243,7 @@ func change_level() -> void:
 	moves_label.text = "%s" % tile_map.moves
 	time_label.text = "00:00"
 	game_result.text = ""
-	next_level_button.visible = false
-	game_is_over = false
+	game_is_over = PLAYING
 	water_texture_rect.visible = tile_map.water_targets_needed > 0
 	water_targets.visible = tile_map.water_targets_needed > 0
 	lava_texture_rect.visible = tile_map.lava_targets_needed > 0
@@ -253,7 +257,7 @@ func finished_all_levels() -> void:
 
 
 func _on_timer_timeout() -> void:
-	if game_is_over:
+	if game_is_over != PLAYING:
 		return
 	tile_map.seconds += 1
 	time_label.text = GameManager.format_timer(tile_map.minutes, tile_map.seconds)
