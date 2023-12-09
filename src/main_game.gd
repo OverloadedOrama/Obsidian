@@ -255,7 +255,7 @@ func change_level() -> void:
 	water_targets.visible = tile_map.water_targets_needed > 0
 	lava_texture_rect.visible = tile_map.lava_targets_needed > 0
 	lava_targets.visible = tile_map.lava_targets_needed > 0
-	water_lava_warning.visible = current_level >= 5
+	water_lava_warning.visible = current_level >= 6
 	calculate_game_status()
 
 
