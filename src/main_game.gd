@@ -167,9 +167,9 @@ func is_neighbor_active(neighbor_data: TileData, coords: Vector2i, look_at_dir: 
 	var neighbor_coords := coords + look_at_dir
 	var neighbor_active := ActivatedStates.NONE
 	var atlas_coords := tile_map.get_cell_atlas_coords(0, neighbor_coords)
-	if atlas_coords == WATER_SOURCE_ATLAS_COORDS or atlas_coords.y == ActivatedStates.WATER + 1:
+	if atlas_coords == WATER_SOURCE_ATLAS_COORDS or atlas_coords == WATER_ACTIVATED_ATLAS_COORDS or atlas_coords.y == ActivatedStates.WATER + 1:
 		neighbor_active = ActivatedStates.WATER
-	elif atlas_coords == LAVA_SOURCE_ATLAS_COORDS or atlas_coords.y == ActivatedStates.LAVA + 1:
+	elif atlas_coords == LAVA_SOURCE_ATLAS_COORDS or atlas_coords == LAVA_ACTIVATED_ATLAS_COORDS or atlas_coords.y == ActivatedStates.LAVA + 1:
 		neighbor_active = ActivatedStates.LAVA
 	if neighbor_active == ActivatedStates.NONE:
 		return ActivatedStates.NONE
