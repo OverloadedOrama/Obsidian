@@ -49,6 +49,11 @@ offset_top = 2.0
 offset_right = 82.0
 offset_bottom = 142.0
 
+[node name="LevelLabel" type="Label" parent="Control/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Level %s"
+
 [node name="GridContainer" type="GridContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
 columns = 2

@@ -35,6 +35,7 @@ var game_is_over := false:
 
 @onready var tile_map_holder: Node2D = $TileMapHolder
 @onready var tile_map: GameMap
+@onready var level_label: Label = %LevelLabel
 @onready var water_texture_rect: TextureRect = %WaterTextureRect
 @onready var water_targets: Label = %WaterTargets
 @onready var lava_texture_rect: TextureRect = %LavaTextureRect
@@ -230,6 +231,7 @@ func change_level() -> void:
 		tile_map.queue_free()
 	tile_map_holder.add_child(new_tile_map)
 	tile_map = new_tile_map
+	level_label.text = tr("Level %s") % [current_level + 1]
 	tile_map.moves = 0
 	tile_map.seconds = 0
 	tile_map.minutes = 0
