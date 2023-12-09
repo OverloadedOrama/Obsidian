@@ -34,4 +34,5 @@ func _on_clear_data_pressed() -> void:
 
 func _on_reset_dialog_confirmed() -> void:
 	GameManager.config.clear()
+	GameManager.config.save(GameManager.SAVED_HIGHSCORE_PATH)
 	get_tree().reload_current_scene()
