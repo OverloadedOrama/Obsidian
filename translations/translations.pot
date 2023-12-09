@@ -30,6 +30,13 @@ msgstr ""
 
 #: src/main_game.gd
 #: src/main_game.tscn
+#: src/Menus/hiscores.gd
+#: src/Menus/hiscores.tscn
+msgid "Level %s"
+msgstr ""
+
+#: src/main_game.gd
+#: src/main_game.tscn
 msgid "00:00"
 msgstr ""
 
@@ -49,6 +56,10 @@ msgstr ""
 msgid "0"
 msgstr ""
 
+#: src/main_game.tscn
+msgid "Water and lava must not be mixed"
+msgstr ""
+
 #: src/Menus/credits.tscn
 msgid ""
 "Made by Emmanouil Papadeas (Overloaded) in 66 hours for the GDA Online Game Jam #1\n"
@@ -66,11 +77,6 @@ msgstr ""
 msgid "Return to menu"
 msgstr ""
 
-#: src/Menus/hiscores.gd
-#: src/Menus/hiscores.tscn
-msgid "Level %s"
-msgstr ""
-
 #: src/Menus/hiscores.tscn
 msgid "Hi-Scores  \n"
 msgstr ""
@@ -85,6 +91,10 @@ msgstr ""
 
 #: src/Menus/hiscores.tscn
 msgid "Time"
+msgstr ""
+
+#: src/Menus/menu.tscn
+msgid "OBSIDIAN"
 msgstr ""
 
 #: src/Menus/menu.tscn

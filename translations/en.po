@@ -30,6 +30,13 @@ msgstr "You have lost!"
 
 #: src/main_game.gd
 #: src/main_game.tscn
+#: src/Menus/hiscores.gd
+#: src/Menus/hiscores.tscn
+msgid "Level %s"
+msgstr "Level %s"
+
+#: src/main_game.gd
+#: src/main_game.tscn
 msgid "00:00"
 msgstr ""
 
@@ -48,6 +55,10 @@ msgstr "Moves:"
 #: src/main_game.tscn
 msgid "0"
 msgstr ""
+
+#: src/main_game.tscn
+msgid "Water and lava must not be mixed"
+msgstr "Water and lava must not be mixed"
 
 #: src/Menus/credits.tscn
 msgid ""
@@ -72,11 +83,6 @@ msgstr ""
 #: src/Menus/settings.tscn
 msgid "Return to menu"
 msgstr "Return to menu"
-
-#: src/Menus/hiscores.gd
-#: src/Menus/hiscores.tscn
-msgid "Level %s"
-msgstr "Level %s"
 
 #: src/Menus/hiscores.tscn
 msgid "Hi-Scores  \n"
