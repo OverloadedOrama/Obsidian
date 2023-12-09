@@ -125,7 +125,3 @@ msgstr "Ένταση ήχων:"
 #: src/Menus/settings.tscn
 msgid "Language:"
 msgstr "Γλώσσα:"
-
-#: src/Menus/settings.tscn
-msgid "Language:"
-msgstr "Γλώσσα:"
