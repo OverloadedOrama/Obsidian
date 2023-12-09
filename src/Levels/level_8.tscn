@@ -1,10 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtw0wchlfqbx2"]
+[gd_scene load_steps=3 format=3 uid="uid://bnj00sigd1wi8"]
 
-[ext_resource type="TileSet" uid="uid://ju5o4sp0nt1i" path="res://assets/tileset.tres" id="1_pgv40"]
-[ext_resource type="Script" path="res://src/GameMap.gd" id="2_x1sta"]
+[ext_resource type="TileSet" uid="uid://ju5o4sp0nt1i" path="res://assets/tileset.tres" id="1_0bvca"]
+[ext_resource type="Script" path="res://src/GameMap.gd" id="2_64061"]
 
 [node name="GameMap" type="TileMap"]
-tile_set = ExtResource("1_pgv40")
+tile_set = ExtResource("1_0bvca")
 format = 2
-layer_0/tile_data = PackedInt32Array(196612, 131073, 0, 196614, 262145, 0, 196613, 327681, 196609, 262149, 1, 1, 4, 262145, 0, 458755, 262145, 0, 65540, 1, 1, 5, 65537, 1, 65541, 131073, 1, 131077, 131073, 65537, 65542, 65537, 1, 262150, 65537, 1, 262151, 65537, 1, 131078, 65537, 1, 196615, 1, 1, 196609, 327681, 65537, 65538, 1, 1, 196610, 1, 0, 196608, 262145, 0, 65537, 65537, 1, 131073, 1, 1, 65539, 1, 1, 262145, 131073, 131073, 262148, 65537, 65537, 327683, 131073, 1, 393219, 1, 1, 327684, 1, 1, 262147, 1, 1, 262146, 1, 1, 262144, 65537, 1, 327685, 65537, 131073)
-script = ExtResource("2_x1sta")
+layer_0/tile_data = PackedInt32Array(262147, 1, 0, 262149, 131073, 0, 393217, 262145, 0, 65543, 262145, 0, 65536, 262145, 0, 262150, 131073, 1, 196614, 131073, 1, 131077, 1, 65537, 131076, 131073, 196609, 327686, 65537, 65537, 327685, 131073, 1, 393221, 1, 1, 458757, 65537, 1, 458756, 1, 1, 458755, 65537, 1, 393219, 65537, 1, 393218, 1, 1, 327681, 1, 65537, 262145, 65537, 1, 262146, 131073, 1, 131078, 65537, 1, 65540, 65537, 1, 65542, 196609, 1, 65541, 1, 1, 196609, 1, 1, 131072, 65537, 1, 131073, 65537, 1, 131075, 196609, 1, 131074, 196609, 1)
+script = ExtResource("2_64061")
+water_targets_needed = 1

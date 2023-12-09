@@ -19,6 +19,8 @@ var levels: Array[PackedScene] = [
 	preload("res://src/Levels/level_7.tscn"),
 	preload("res://src/Levels/level_8.tscn"),
 	preload("res://src/Levels/level_9.tscn"),
+	preload("res://src/Levels/level_10.tscn"),
+	preload("res://src/Levels/level_11.tscn"),
 ]
 var current_level := 0
 var water_targets_activated := 0
