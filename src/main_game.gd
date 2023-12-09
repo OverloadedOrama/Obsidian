@@ -113,9 +113,10 @@ func calculate_game_status() -> void:
 	water_targets.text = "%s/%s" % [water_targets_activated, tile_map.water_targets_needed]
 	lava_targets.text = "%s/%s" % [lava_targets_activated, tile_map.lava_targets_needed]
 	if water_targets_activated == tile_map.water_targets_needed and lava_targets_activated == tile_map.lava_targets_needed:
-		game_result.text = tr("You have won!")
-		game_is_over = WON
-		victory_sound.play()
+		if game_is_over == PLAYING:
+			game_result.text = tr("You have won!")
+			game_is_over = WON
+			victory_sound.play()
 
 
 func deactivate_entire_grid() -> void:
