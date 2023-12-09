@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=17 format=3 uid="uid://bkxvisfjnnwpw"]
+[gd_resource type="Theme" load_steps=23 format=3 uid="uid://bkxvisfjnnwpw"]
 
 [ext_resource type="Texture2D" uid="uid://8hn525031aot" path="res://assets/ui/obsidian_button_focus.png" id="1_6dx11"]
 [ext_resource type="FontFile" uid="uid://dpicc0aj72ox2" path="res://assets/font/PublicPixel.woff2" id="1_436fg"]
@@ -47,11 +47,59 @@ texture_margin_top = 1.0
 texture_margin_right = 9.0
 texture_margin_bottom = 1.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ck0fl"]
+bg_color = Color(0.611765, 0.45098, 0.611765, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nyscr"]
+bg_color = Color(0.780652, 0.45481, 0.744991, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ec605"]
+bg_color = Color(0.27454, 0.203708, 0.27454, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kw24t"]
 texture = ExtResource("3_ogiyv")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dvwcb"]
 bg_color = Color(0.231373, 0.0941176, 0.235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6p4lo"]
+bg_color = Color(0.611765, 0.45098, 0.611765, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hyrfm"]
+bg_color = Color(0.780652, 0.45481, 0.744991, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0l351"]
+bg_color = Color(0.27454, 0.203708, 0.27454, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
 
 [resource]
 default_font = ExtResource("1_436fg")
@@ -60,6 +108,9 @@ Button/styles/focus = SubResource("StyleBoxTexture_vv0kf")
 Button/styles/hover = SubResource("StyleBoxTexture_sgf1t")
 Button/styles/normal = SubResource("StyleBoxTexture_wkn2p")
 Button/styles/pressed = SubResource("StyleBoxTexture_gwspo")
+HScrollBar/styles/grabber = SubResource("StyleBoxFlat_ck0fl")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_nyscr")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_ec605")
 MarginContainer/constants/margin_bottom = 5
 MarginContainer/constants/margin_left = 5
 MarginContainer/constants/margin_right = 5
@@ -70,6 +121,9 @@ PopupMenu/icons/radio_checked = ExtResource("2_hdros")
 PopupMenu/icons/radio_unchecked = ExtResource("3_fmk4d")
 PopupMenu/icons/radio_unchecked_disabled = ExtResource("3_fmk4d")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_dvwcb")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_6p4lo")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_hyrfm")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_0l351")
 ValueSlider/base_type = &"TextureProgressBar"
 ValueSlider/colors/progress_color = Color(0.231373, 0.0941176, 0.235294, 1)
 ValueSlider/colors/under_color = Color(0.113725, 0.0666667, 0.117647, 1)
