@@ -18,3 +18,5 @@ Water sound: https://freesound.org/people/Quistard/sounds/166822/
 Lava sound: https://freesound.org/people/casiba842/sounds/577880/
 
 Victory sound: https://freesound.org/people/LittleRobotSoundFactory/sounds/274177/
+
+Lose sound: https://freesound.org/people/ImATaco/sounds/652328/

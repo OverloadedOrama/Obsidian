@@ -48,6 +48,7 @@ var game_is_over := PLAYING:
 @onready var water_activated_sound: AudioStreamPlayer = $WaterActivatedSound
 @onready var lava_activated_sound: AudioStreamPlayer = $LavaActivatedSound
 @onready var victory_sound: AudioStreamPlayer = $VictorySound
+@onready var lose_sound: AudioStreamPlayer = $LoseSound
 @onready var timer: Timer = $Timer
 
 
@@ -152,6 +153,7 @@ func check_if_active(tile_data: TileData, coords: Vector2i) -> bool:
 	if state >= ActivatedStates.BOTH:
 		game_result.text = tr("You have lost!")
 		game_is_over = LOST
+		lose_sound.play()
 		state = ActivatedStates.NONE
 	return toggle_tile(coords, state)
 
