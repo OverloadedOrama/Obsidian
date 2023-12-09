@@ -62,13 +62,12 @@ msgstr ""
 
 #: src/Menus/credits.tscn
 msgid ""
-"Made by Emmanouil Papadeas (Overloaded) in 66 hours for the GDA Online Game Jam #1\n"
+"Made by Emmanouil Papadeas (Overloaded) and Sol Louloudaki (Soliscital) in 66 hours for the GDA Online Game Jam #1\n"
 "\n"
 "Made with Godot Engine\n"
 "Graphics made with Pixelorama\n"
 "Font: Public Pixel Font\n"
-"Sounds from freesound.org\n"
-"\n"
+"Sounds from freesound.org"
 msgstr ""
 
 #: src/Menus/credits.tscn
@@ -91,10 +90,6 @@ msgstr ""
 
 #: src/Menus/hiscores.tscn
 msgid "Time"
-msgstr ""
-
-#: src/Menus/menu.tscn
-msgid "OBSIDIAN"
 msgstr ""
 
 #: src/Menus/menu.tscn

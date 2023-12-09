@@ -32,25 +32,35 @@ stretch_mode = 3
 
 [node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 focus_neighbor_top = NodePath("../ExitButton")
 text = "Play"
 
 [node name="HiScoresButton" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Hi-Scores"
 
 [node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Settings"
 
 [node name="CreditsButton" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Credits"
 
 [node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 focus_neighbor_bottom = NodePath("../PlayButton")
 text = "Exit"
 

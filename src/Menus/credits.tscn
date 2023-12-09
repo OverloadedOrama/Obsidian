@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://drhabkltstidn"]
+[gd_scene load_steps=3 format=3 uid="uid://drhabkltstidn"]
 
 [ext_resource type="Script" path="res://src/Menus/credits.gd" id="1_ykcp0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5m3du"]
+line_spacing = 1.0
+font_size = 8
 
 [node name="Credits" type="Panel"]
 anchors_preset = 15
@@ -24,19 +28,19 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Made by Emmanouil Papadeas (Overloaded) in 66 hours for the GDA Online Game Jam #1
+text = "Made by Emmanouil Papadeas (Overloaded) and Sol Louloudaki (Soliscital) in 66 hours for the GDA Online Game Jam #1
 
 Made with Godot Engine
 Graphics made with Pixelorama
 Font: Public Pixel Font
-Sounds from freesound.org
-
-"
+Sounds from freesound.org"
+label_settings = SubResource("LabelSettings_5m3du")
 autowrap_mode = 2
 
 [node name="ReturnToMenu" type="Button" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Return to menu"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ReturnToMenu" to="." method="_on_return_to_menu_pressed"]
