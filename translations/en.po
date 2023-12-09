@@ -80,8 +80,8 @@ msgstr ""
 #: src/Menus/credits.tscn
 #: src/Menus/hiscores.tscn
 #: src/Menus/settings.tscn
-msgid "Return to menu"
-msgstr "Return to menu"
+msgid "Menu"
+msgstr "Menu"
 
 #: src/Menus/hiscores.tscn
 msgid "Hi-Scores  \n"
@@ -98,6 +98,18 @@ msgstr "Moves"
 #: src/Menus/hiscores.tscn
 msgid "Time"
 msgstr "Time"
+
+#: src/Menus/hiscores.tscn
+msgid "Reset"
+msgstr "Reset"
+
+#: src/Menus/hiscores.tscn
+msgid "Clicking OK will remove the hi-score data from memory. Continue?"
+msgstr "Clicking OK will remove the hi-score data from memory. Continue?"
+
+#: src/Menus/hiscores.tscn
+msgid "Cancel"
+msgstr "Cancel"
 
 #: src/Menus/menu.tscn
 msgid "Play"

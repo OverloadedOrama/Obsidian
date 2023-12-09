@@ -60,14 +60,13 @@ alignment = 1
 [node name="ClearData" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
 text = "Reset"
 
 [node name="ReturnToMenu" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Return to menu"
+text = "Menu"
 
 [node name="ResetDialog" type="ConfirmationDialog" parent="."]
 title = ""

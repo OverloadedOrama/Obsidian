@@ -41,6 +41,6 @@ autowrap_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Return to menu"
+text = "Menu"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ReturnToMenu" to="." method="_on_return_to_menu_pressed"]

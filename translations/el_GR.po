@@ -79,8 +79,8 @@ msgstr ""
 #: src/Menus/credits.tscn
 #: src/Menus/hiscores.tscn
 #: src/Menus/settings.tscn
-msgid "Return to menu"
-msgstr "Επιστροφή στο μενού"
+msgid "Menu"
+msgstr "Μενού"
 
 #: src/Menus/hiscores.tscn
 msgid "Hi-Scores  \n"
@@ -97,6 +97,18 @@ msgstr "Κινήσεις"
 #: src/Menus/hiscores.tscn
 msgid "Time"
 msgstr "Χρόνος"
+
+#: src/Menus/hiscores.tscn
+msgid "Reset"
+msgstr "Επαναφορά"
+
+#: src/Menus/hiscores.tscn
+msgid "Clicking OK will remove the hi-score data from memory. Continue?"
+msgstr "Αν πατήσετε ΟΚ θα αφαιρεθούν τα δεδομένα των υψηλών σκορ από τη μνήμη. Συνέχεια;"
+
+#: src/Menus/hiscores.tscn
+msgid "Cancel"
+msgstr "Ακύρωση"
 
 #: src/Menus/menu.tscn
 msgid "Play"

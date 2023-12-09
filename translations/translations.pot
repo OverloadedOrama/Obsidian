@@ -73,7 +73,7 @@ msgstr ""
 #: src/Menus/credits.tscn
 #: src/Menus/hiscores.tscn
 #: src/Menus/settings.tscn
-msgid "Return to menu"
+msgid "Menu"
 msgstr ""
 
 #: src/Menus/hiscores.tscn
@@ -90,6 +90,14 @@ msgstr ""
 
 #: src/Menus/hiscores.tscn
 msgid "Time"
+msgstr ""
+
+#: src/Menus/hiscores.tscn
+msgid "Reset"
+msgstr ""
+
+#: src/Menus/hiscores.tscn
+msgid "Clicking OK will remove the hi-score data from memory. Continue?"
 msgstr ""
 
 #: src/Menus/menu.tscn
