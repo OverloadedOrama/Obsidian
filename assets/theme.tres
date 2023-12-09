@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=23 format=3 uid="uid://bkxvisfjnnwpw"]
+[gd_resource type="Theme" load_steps=28 format=3 uid="uid://bkxvisfjnnwpw"]
 
 [ext_resource type="Texture2D" uid="uid://8hn525031aot" path="res://assets/ui/obsidian_button_focus.png" id="1_6dx11"]
 [ext_resource type="FontFile" uid="uid://dpicc0aj72ox2" path="res://assets/font/PublicPixel.woff2" id="1_436fg"]
@@ -10,6 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://dux2tqb0m1rrv" path="res://assets/ui/value_arrow_press.svg" id="3_ged5k"]
 [ext_resource type="Texture2D" uid="uid://cytey4cks21fv" path="res://assets/ui/obsidian_title_background.png" id="3_ogiyv"]
 [ext_resource type="Texture2D" uid="uid://bsisx0uof5rna" path="res://assets/ui/value_slider.png" id="4_ebh80"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33t64"]
+content_margin_left = 4.0
+content_margin_top = 6.0
+bg_color = Color(0.262821, 0.172442, 0.262821, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vv0kf"]
 content_margin_top = 5.0
@@ -101,9 +106,18 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 anti_aliasing = false
 
+[sub_resource type="ImageTexture" id="ImageTexture_jigal"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_1x7fe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yedng"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lybby"]
+
 [resource]
 default_font = ExtResource("1_436fg")
 default_font_size = 8
+AcceptDialog/styles/panel = SubResource("StyleBoxFlat_33t64")
 Button/styles/focus = SubResource("StyleBoxTexture_vv0kf")
 Button/styles/hover = SubResource("StyleBoxTexture_sgf1t")
 Button/styles/normal = SubResource("StyleBoxTexture_wkn2p")
@@ -132,3 +146,7 @@ ValueSlider/icons/arrow_normal = ExtResource("1_r4m4w")
 ValueSlider/icons/arrow_pressed = ExtResource("3_ged5k")
 ValueSlider/icons/texture_progress = ExtResource("4_ebh80")
 ValueSlider/icons/texture_under = ExtResource("4_ebh80")
+Window/icons/close = SubResource("ImageTexture_jigal")
+Window/icons/close_pressed = SubResource("ImageTexture_1x7fe")
+Window/styles/embedded_border = SubResource("StyleBoxEmpty_yedng")
+Window/styles/embedded_unfocused_border = SubResource("StyleBoxEmpty_lybby")

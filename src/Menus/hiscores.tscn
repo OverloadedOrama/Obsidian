@@ -53,10 +53,29 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Time"
 
-[node name="ReturnToMenu" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ClearData" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Reset"
+
+[node name="ReturnToMenu" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Return to menu"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ReturnToMenu" to="." method="_on_return_to_menu_pressed"]
+[node name="ResetDialog" type="ConfirmationDialog" parent="."]
+title = ""
+position = Vector2i(0, 36)
+size = Vector2i(200, 70)
+dialog_text = "Clicking OK will remove the hi-score data from memory. Continue?"
+dialog_autowrap = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ClearData" to="." method="_on_clear_data_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ReturnToMenu" to="." method="_on_return_to_menu_pressed"]
+[connection signal="confirmed" from="ResetDialog" to="." method="_on_reset_dialog_confirmed"]

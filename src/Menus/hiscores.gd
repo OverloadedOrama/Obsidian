@@ -1,6 +1,7 @@
 extends Panel
 
 @onready var score_container: GridContainer = %ScoreContainer
+@onready var reset_dialog: ConfirmationDialog = $ResetDialog
 
 
 func _ready() -> void:
@@ -25,3 +26,12 @@ func _ready() -> void:
 
 func _on_return_to_menu_pressed() -> void:
 	get_tree().change_scene_to_packed(GameManager.MENU_TSCN)
+
+
+func _on_clear_data_pressed() -> void:
+	reset_dialog.popup_centered()
+
+
+func _on_reset_dialog_confirmed() -> void:
+	GameManager.config.clear()
+	get_tree().reload_current_scene()
