@@ -75,7 +75,7 @@ msgstr ""
 "\n"
 "Φτιαγμένο με Godot Engine\n"
 "Γραφικά φτιαγμένα με Pixelorama\n"
-"Font: Public Pixel Font\n"
+"Γραμματοσειρά: Public Pixel Font\n"
 "Ήχοι από freesound.org"
 
 #: src/Menus/credits.tscn
