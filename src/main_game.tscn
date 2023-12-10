@@ -38,16 +38,17 @@ texture = ExtResource("2_uyp1c")
 stretch_mode = 1
 
 [node name="TileMapHolder" type="Node2D" parent="."]
-position = Vector2(96, 48)
+position = Vector2(96, 64)
 
 [node name="GameResult" type="Label" parent="."]
 unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 96.0
-offset_right = 288.0
-offset_bottom = 216.0
+offset_left = 80.0
+offset_top = 22.0
+offset_right = 304.0
+offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
