@@ -64,33 +64,33 @@ offset_bottom = 19.0
 text = "Level %s"
 horizontal_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="WaterLavaContainer" type="GridContainer" parent="."]
 offset_left = 10.0
 offset_top = 190.0
 offset_right = 102.0
 offset_bottom = 216.0
 columns = 2
 
-[node name="WaterTextureRect" type="TextureRect" parent="GridContainer"]
+[node name="WaterTextureRect" type="TextureRect" parent="WaterLavaContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("3_80gnh")
 stretch_mode = 2
 
-[node name="WaterTargets" type="Label" parent="GridContainer"]
+[node name="WaterTargets" type="Label" parent="WaterLavaContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0/2"
 
-[node name="LavaTextureRect" type="TextureRect" parent="GridContainer"]
+[node name="LavaTextureRect" type="TextureRect" parent="WaterLavaContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("4_g6n4p")
 stretch_mode = 2
 
-[node name="LavaTargets" type="Label" parent="GridContainer"]
+[node name="LavaTargets" type="Label" parent="WaterLavaContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0/2"
@@ -149,8 +149,20 @@ shortcut = SubResource("Shortcut_8ap6f")
 shortcut_in_tooltip = false
 texture_normal = ExtResource("6_pvojk")
 
+[node name="RotateTip" type="Label" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 0)
+offset_left = 263.0
+offset_right = 377.0
+offset_bottom = 216.0
+size_flags_vertical = 3
+text = "Help the liquid reach its destination by rotating the pipes"
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="WaterLavaWarning" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(96, 0)
 offset_left = 281.0
 offset_right = 377.0

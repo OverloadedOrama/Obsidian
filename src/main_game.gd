@@ -48,6 +48,7 @@ var game_is_over := PLAYING:
 @onready var game_result: Label = %GameResult
 @onready var moves_label: Label = %MovesLabel
 @onready var time_label: Label = %TimeLabel
+@onready var rotate_tip: Label = %RotateTip
 @onready var water_lava_warning: Label = %WaterLavaWarning
 @onready var rotate_pipe_sound: AudioStreamPlayer = $RotatePipeSound
 @onready var water_activated_sound: AudioStreamPlayer = $WaterActivatedSound
@@ -258,6 +259,7 @@ func change_level() -> void:
 	water_targets.visible = tile_map.water_targets_needed > 0
 	lava_texture_rect.visible = tile_map.lava_targets_needed > 0
 	lava_targets.visible = tile_map.lava_targets_needed > 0
+	rotate_tip.visible = current_level == 0
 	water_lava_warning.visible = current_level >= 6
 	calculate_game_status()
 

@@ -57,6 +57,10 @@ msgid "0"
 msgstr ""
 
 #: src/main_game.tscn
+msgid "Help the liquid reach its destination by rotating the pipes"
+msgstr "Help the liquid reach its destination by rotating the pipes"
+
+#: src/main_game.tscn
 msgid "Water and lava must not be mixed"
 msgstr "Water and lava must not be mixed"
 
