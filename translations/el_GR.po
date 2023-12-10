@@ -128,9 +128,13 @@ msgstr "Ρυθμίσεις"
 msgid "Credits"
 msgstr "Συντελεστές"
 
-#: src/Menus/menu.tscn
-msgid "Exit"
-msgstr "Έξοδος"
+#: src/Menus/settings.tscn
+msgid "Master volume:"
+msgstr "Κύρια ένταση:"
+
+#: src/Menus/settings.tscn
+msgid "Music volume:"
+msgstr "Ένταση μουσικής:"
 
 #: src/Menus/settings.tscn
 msgid "Sound volume:"

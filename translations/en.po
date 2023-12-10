@@ -129,9 +129,13 @@ msgstr "Settings"
 msgid "Credits"
 msgstr "Credits"
 
-#: src/Menus/menu.tscn
-msgid "Exit"
-msgstr "Exit"
+#: src/Menus/settings.tscn
+msgid "Master volume:"
+msgstr "Master volume:"
+
+#: src/Menus/settings.tscn
+msgid "Music volume:"
+msgstr "Music volume:"
 
 #: src/Menus/settings.tscn
 msgid "Sound volume:"
