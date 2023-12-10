@@ -13,7 +13,7 @@ config_version=5
 config/name="Obsidian"
 run/main_scene="res://src/Menus/menu.tscn"
 config/use_custom_user_dir=true
-config/features=PackedStringArray("4.2", "GL Compatibility")
+config/features=PackedStringArray("4.1", "GL Compatibility")
 run/low_processor_mode=true
 config/icon="res://icon.svg"
 
