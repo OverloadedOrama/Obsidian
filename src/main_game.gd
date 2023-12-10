@@ -194,13 +194,13 @@ func is_neighbor_active(neighbor_data: TileData, coords: Vector2i, look_at_dir: 
 
 
 func toggle_tile(coords: Vector2i, set_state: ActivatedStates) -> bool:
-	var has_changed := false
 	var atlas_coords := tile_map.get_cell_atlas_coords(0, coords)
 	if atlas_coords == WATER_SOURCE_ATLAS_COORDS or atlas_coords == LAVA_SOURCE_ATLAS_COORDS:
 		# Never de-activate the sources
 		return false
 	if atlas_coords == Vector2i(-1, -1):
 		return false
+	var has_changed := false
 	var alternative_tile := tile_map.get_cell_alternative_tile(0, coords)
 	if atlas_coords.y == 0:
 		var target_coords := atlas_coords
