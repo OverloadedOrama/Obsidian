@@ -6,7 +6,7 @@ const MAIN_GAME_TSCN := preload("res://src/main_game.tscn")
 const HISCORES_TSCN := preload("res://src/Menus/hiscores.tscn")
 const SETTINGS_TSCN := preload("res://src/Menus/settings.tscn")
 const CREDITS_TSCN := preload("res://src/Menus/credits.tscn")
-
+const MUSIC := preload("res://assets/audio/music/580898__bloodpixelhero__in-game.ogg")
 
 var config := ConfigFile.new()
 var levels: Array[LevelData] = []
@@ -32,6 +32,11 @@ func _ready() -> void:
 	if OS.get_locale().begins_with("el"):
 		TranslationServer.set_locale(OS.get_locale())
 	config.load(SAVED_HIGHSCORE_PATH)
+	var music_player := AudioStreamPlayer.new()
+	music_player.stream = MUSIC
+	music_player.bus = &"Music"
+	add_child(music_player)
+	music_player.play()
 
 
 func add_level_data(tile_map: GameMap, index: int) -> void:

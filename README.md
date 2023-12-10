@@ -15,6 +15,8 @@ Font by: https://ggbot.itch.io/public-pixel-font
 
 Sounds from https://freesound.org
 
+Music: https://freesound.org/people/BloodPixelHero/sounds/580898/
+
 Pipe rotating sound: https://freesound.org/people/schademans/sounds/13287/
 
 Water sound: https://freesound.org/people/Quistard/sounds/166822/

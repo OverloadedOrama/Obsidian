@@ -1,6 +1,6 @@
 extends Panel
 
-var sound_bus_index := AudioServer.get_bus_index(&"Sounds")
+var sound_bus_index := AudioServer.get_bus_index(&"Master")
 
 @onready var sound_volume_slider: ValueSlider = %SoundVolumeSlider
 @onready var mute_button: TextureButton = %MuteButton
