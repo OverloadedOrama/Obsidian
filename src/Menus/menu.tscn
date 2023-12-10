@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjumi28w7ej7l"]
+[gd_scene load_steps=4 format=3 uid="uid://bjumi28w7ej7l"]
 
 [ext_resource type="Script" path="res://src/Menus/menu.gd" id="1_3cudc"]
 [ext_resource type="Texture2D" uid="uid://hcgs63l5ha7i" path="res://assets/ui/obsidian_title.png" id="2_isdqs"]
+[ext_resource type="Texture2D" uid="uid://frggof1s0dqo" path="res://assets/ui/obsidian_exit_icon.png" id="3_yqol7"]
 
 [node name="Menu" type="Panel"]
 anchors_preset = 15
@@ -26,6 +27,7 @@ theme_override_constants/separation = 2
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 texture = ExtResource("2_isdqs")
 stretch_mode = 3
@@ -35,7 +37,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-focus_neighbor_top = NodePath("../ExitButton")
 text = "Play"
 
 [node name="HiScoresButton" type="Button" parent="MarginContainer/VBoxContainer"]
@@ -56,16 +57,15 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Credits"
 
-[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="ExitButton" type="TextureButton" parent="MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-focus_neighbor_bottom = NodePath("../PlayButton")
-text = "Exit"
+size_flags_horizontal = 0
+size_flags_vertical = 8
+texture_normal = ExtResource("3_yqol7")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HiScoresButton" to="." method="_on_hi_scores_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ExitButton" to="." method="_on_exit_button_pressed"]

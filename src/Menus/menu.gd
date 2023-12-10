@@ -1,7 +1,7 @@
 extends Panel
 
 @onready var play_button: Button = %PlayButton
-@onready var exit_button: Button = %ExitButton
+@onready var exit_button: TextureButton = %ExitButton
 
 
 func _ready() -> void:
