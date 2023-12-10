@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bp8kexh74y1a4" path="res://assets/ui/lava_drop.png" id="4_g6n4p"]
 [ext_resource type="Texture2D" uid="uid://jxnhcy4qoogx" path="res://assets/ui/hourglass.png" id="5_j65u2"]
 [ext_resource type="Texture2D" uid="uid://cenvdol3cdkvl" path="res://assets/ui/restart.png" id="6_pvojk"]
-[ext_resource type="Texture2D" uid="uid://bc1wgwj8rf1gr" path="res://assets/ui/next_level.png" id="7_wx4oq"]
+[ext_resource type="Texture2D" uid="uid://bc1wgwj8rf1gr" path="res://assets/ui/go_to_menu.png" id="6_rutm1"]
 [ext_resource type="AudioStream" uid="uid://dotxfxq7hop4u" path="res://assets/audio/sounds/13287__schademans__pipe6.wav" id="9_cq6tf"]
 [ext_resource type="AudioStream" uid="uid://dg3ytmfd41acx" path="res://assets/audio/sounds/274177__littlerobotsoundfactory__jingle_win_synth_03.wav" id="10_0dvfh"]
 [ext_resource type="AudioStream" uid="uid://cm80vvuu2chcr" path="res://assets/audio/sounds/166822__quistard__water-pouring-4.ogg" id="10_wpwex"]
@@ -139,8 +139,7 @@ size_flags_horizontal = 0
 focus_mode = 0
 shortcut = SubResource("Shortcut_yimc3")
 shortcut_in_tooltip = false
-texture_normal = ExtResource("7_wx4oq")
-flip_h = true
+texture_normal = ExtResource("6_rutm1")
 
 [node name="RestartButton" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
