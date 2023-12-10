@@ -1,13 +1,14 @@
 # Obsidian
 
 Developed by Emmanouil Papadeas (Overloaded)
+
 Graphics by Sol Louloudaki (Soliscital) and John Nikitakis (Erevoid)
 
-Created in around 2 days for the GDA Online Game Jam #1.
+Created in around 2 days for the [GDA Online Game Jam #1](https://itch.io/jam/gda-online-game-jam-1).
 
-Made with Godot Engine 4.2
+Made with Godot Engine 4.2.
 
-Graphics made with Pixelorama
+Graphics made with [Pixelorama](https://orama-interactive.itch.io/pixelorama).
 
 
 Font by: https://ggbot.itch.io/public-pixel-font
