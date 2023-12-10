@@ -28,13 +28,15 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Made by Emmanouil Papadeas (Overloaded) and Sol Louloudaki (Soliscital) in 66 hours for the GDA Online Game Jam #1
+text = "Developed by Emmanouil Papadeas (Overloaded)
+Graphics by Sol Louloudaki (Soliscital) and John Nikitakis (Erevoid)
 
 Made with Godot Engine
 Graphics made with Pixelorama
 Font: Public Pixel Font
 Sounds from freesound.org"
 label_settings = SubResource("LabelSettings_5m3du")
+horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="ReturnToMenu" type="Button" parent="MarginContainer/VBoxContainer"]

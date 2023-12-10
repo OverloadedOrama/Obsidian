@@ -62,14 +62,16 @@ msgstr "Το νερό και η λάβα δεν πρέπει να αναμειχ
 
 #: src/Menus/credits.tscn
 msgid ""
-"Made by Emmanouil Papadeas (Overloaded) and Sol Louloudaki (Soliscital) in 66 hours for the GDA Online Game Jam #1\n"
+"Developed by Emmanouil Papadeas (Overloaded)\n"
+"Graphics by Sol Louloudaki (Soliscital) and John Nikitakis (Erevoid)\n"
 "\n"
 "Made with Godot Engine\n"
 "Graphics made with Pixelorama\n"
 "Font: Public Pixel Font\n"
 "Sounds from freesound.org"
 msgstr ""
-"Ανεπτυγμένο από τον Εμμανουήλ Παπαδέα (Overloaded) και τη Σολ Λουλουδάκη (Soliscital) σε 66 ώρες για το GDA Online Game Jam #1\n"
+"Ανεπτυγμένο από τον Εμμανουήλ Παπαδέα (Overloaded)\n"
+"Γραφικά από την Σολ Λουλουδάκη (Soliscital) και τον Γιάννη Νικητάκη (Erevoid)\n"
 "\n"
 "Φτιαγμένο με Godot Engine\n"
 "Γραφικά φτιαγμένα με Pixelorama\n"

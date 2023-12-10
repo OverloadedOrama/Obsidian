@@ -62,7 +62,8 @@ msgstr ""
 
 #: src/Menus/credits.tscn
 msgid ""
-"Made by Emmanouil Papadeas (Overloaded) and Sol Louloudaki (Soliscital) in 66 hours for the GDA Online Game Jam #1\n"
+"Developed by Emmanouil Papadeas (Overloaded)\n"
+"Graphics by Sol Louloudaki (Soliscital) and John Nikitakis (Erevoid)\n"
 "\n"
 "Made with Godot Engine\n"
 "Graphics made with Pixelorama\n"

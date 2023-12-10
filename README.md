@@ -1,6 +1,9 @@
 # Obsidian
 
-Made by Emmanouil Papadeas (Overloaded) and Sol Louloudaki (Soliscital) in 66 hours for the GDA Online Game Jam #1
+Developed by Emmanouil Papadeas (Overloaded)
+Graphics by Sol Louloudaki (Soliscital) and John Nikitakis (Erevoid)
+
+Created in around 2 days for the GDA Online Game Jam #1.
 
 Made with Godot Engine 4.2
 
