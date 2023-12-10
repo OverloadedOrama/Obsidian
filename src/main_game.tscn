@@ -57,7 +57,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Control" type="Panel" parent="."]
-offset_right = 110.0
+offset_right = 128.0
 offset_bottom = 144.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_myr3m")
 

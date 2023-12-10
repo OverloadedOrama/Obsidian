@@ -58,7 +58,7 @@ msgstr ""
 
 #: src/main_game.tscn
 msgid "Water and lava must not be mixed"
-msgstr "Το νερό και η λάβα δεν πρέπει να αναμειχθούν"
+msgstr "Νερό και λάβα δεν πρέπει να αναμειχθούν"
 
 #: src/Menus/credits.tscn
 msgid ""
