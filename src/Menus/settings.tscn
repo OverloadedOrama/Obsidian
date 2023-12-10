@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfimivt35n1v6"]
+[gd_scene load_steps=5 format=3 uid="uid://cfimivt35n1v6"]
 
 [ext_resource type="Script" path="res://src/Menus/settings.gd" id="1_m36jc"]
 [ext_resource type="Script" path="res://src/Nodes/ValueSlider.gd" id="2_7lbqn"]
+[ext_resource type="Texture2D" uid="uid://6ydghrbmi13y" path="res://assets/ui/obsidian_sound_icon.png" id="3_k0e6f"]
+[ext_resource type="Texture2D" uid="uid://cyrqsop4tp58i" path="res://assets/ui/obsidian_sound_off_icon.png" id="4_qsbgs"]
 
 [node name="Settings" type="Panel"]
 anchors_preset = 15
@@ -32,7 +34,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Sound volume:"
 
-[node name="SoundVolumeSlider" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="SoundVolumeSlider" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/GridContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 2
@@ -45,6 +51,13 @@ stretch_margin_right = 3
 stretch_margin_bottom = 3
 script = ExtResource("2_7lbqn")
 show_arrows = false
+
+[node name="MuteButton" type="TextureButton" parent="MarginContainer/VBoxContainer/GridContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("3_k0e6f")
+texture_pressed = ExtResource("4_qsbgs")
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -67,6 +80,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Menu"
 
-[connection signal="value_changed" from="MarginContainer/VBoxContainer/GridContainer/SoundVolumeSlider" to="." method="_on_sound_volume_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/GridContainer/HBoxContainer/SoundVolumeSlider" to="." method="_on_sound_volume_slider_value_changed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/GridContainer/HBoxContainer/MuteButton" to="." method="_on_mute_button_toggled"]
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/GridContainer/LanguageOptionButton" to="." method="_on_language_option_button_item_selected"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ReturnToMenu" to="." method="_on_return_to_menu_pressed"]
